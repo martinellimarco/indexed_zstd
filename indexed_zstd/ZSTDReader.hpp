@@ -127,6 +127,7 @@ public:
         for (const auto& kv : offsets) {
             ZSTDSeek_addJumpTableRecord(jt, kv.first, kv.second);
         }
+        buildBlocToDataOffsetsMap();
     }
 
     size_t

@@ -13,21 +13,21 @@ for i in range(len(a)):
     print(chr(a[i]), end=''),
 print("")
 
-print("tell is 26: ", file.tell())
-print("compressed tell is 78: ", file.tell_compressed())
+print("Tell is 26: ", file.tell())
+print("Compressed tell is 78: ", file.tell_compressed())
 
-print("seeking back to 15")
+print("Seeking back to 15")
 
 file.seek(15)
-print("tell is 15?: ", file.tell())
-print("compressed tell is 49: ", file.tell_compressed())
+print("Tell is 15?: ", file.tell())
+print("Compressed tell is 49: ", file.tell_compressed())
 
-print("filesize is 26? ", file.size())
+print("Filesize is 26? ", file.size())
 
-print("compressed tell is 49: ", file.tell_compressed())
-print("reading a byte after eof")
+print("Compressed tell is 49: ", file.tell_compressed())
+print("Reading a byte after EOF")
 file.read(1)
-print("compressed tell is 78: ", file.tell_compressed())
+print("Compressed tell is 78: ", file.tell_compressed())
 
 
 print("Test reading again, letters from P to Z")
@@ -36,4 +36,15 @@ for i in range(len(a)):
     print(chr(a[i]), end=''),
 print("")
 
+print("Testing set_block_offsets")
+
+file2 = IndexedZstdFile( "test.zst" )
+print("Block offset completed?: ", file2.block_offsets_complete())
+file2.set_block_offsets(file.block_offsets())
+
+print(file2.block_offsets())
+
+print("Block offset completed?: ", file2.block_offsets_complete())
+
 file.close()
+file2.close()
