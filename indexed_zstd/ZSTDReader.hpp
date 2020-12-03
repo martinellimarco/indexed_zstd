@@ -21,35 +21,44 @@ public:
     explicit
     ZSTDReader( std::string filePath )
     {
-        sctx = ZSTDSeek_createFromFile(filePath.c_str());
+        sctx = ZSTDSeek_createFromFileWithoutJumpTable(filePath.c_str());
         if(!sctx){
             throw std::invalid_argument( "Unable to create a ZSTDSeekContext" );
         }
-        buildBlocToDataOffsetsMap();
         m_closed = false;
     }
 
     explicit
-    ZSTDReader( int fileDescriptor ) //FIXME is it needed?
+    ZSTDReader( int fileDescriptor )
     {
-        m_closed = true;
+        sctx = ZSTDSeek_createFromFileDescriptorWithoutJumpTable(fileDescriptor);
+        if(!sctx){
+            throw std::invalid_argument( "Unable to create a ZSTDSeekContext" );
+        }
+        m_closed = false;
     }
 
     ZSTDReader( const char*  zstdData,
                const size_t size )
     {
-        sctx = ZSTDSeek_create((void*)zstdData, size);
+        sctx = ZSTDSeek_createWithoutJumpTable((void*)zstdData, size);
         if(!sctx){
             throw std::invalid_argument( "Unable to create a ZSTDSeekContext" );
         }
-        buildBlocToDataOffsetsMap();
         m_closed = false;
     }
 
     int
     fileno() const override
     {
-        throw std::invalid_argument( "Not Implemented" ); //FIXME is it needed?
+        if(m_closed) {
+            throw std::invalid_argument( "The file is not open!" );
+        }
+        int fileno = ZSTDSeek_fileno(sctx);
+        if(fileno < 0){
+            throw std::invalid_argument( "fileno not available" );
+        }
+        return fileno;
     }
 
     bool
@@ -77,13 +86,14 @@ public:
         if(m_closed){
             return true;
         }
-        return m_fileSize == (size_t)ZSTDSeek_tell(sctx);
+        return ZSTDSeek_uncompressedFileSize(sctx) == (size_t)ZSTDSeek_tell(sctx);
     }
 
     bool
     blockOffsetsComplete() const
     {
-        return true;
+        ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
+        return jt->length>0;
     }
 
     /**
@@ -93,6 +103,9 @@ public:
     std::map<size_t, size_t>
     blockOffsets()
     {
+        if(!blockOffsetsComplete()) {
+            buildBlocToDataOffsetsMap();
+        }
         return m_blockToDataOffsets;
     }
 
@@ -104,13 +117,16 @@ public:
     std::map<size_t, size_t>
     availableBlockOffsets()
     {
-        return m_blockToDataOffsets;
+        return blockOffsets();
     }
 
     void
-    setBlockOffsets( std::map<size_t, size_t> offsets )  //FIXME is it needed?
+    setBlockOffsets( std::map<size_t, size_t> offsets )
     {
-        throw std::invalid_argument( "Not Implemented" );
+        ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
+        for (const auto& kv : offsets) {
+            ZSTDSeek_addJumpTableRecord(jt, kv.first, kv.second);
+        }
     }
 
     size_t
@@ -123,15 +139,15 @@ public:
      * @return number of processed bits of compressed zstd input file stream
      */
     size_t
-    tellCompressed() const //FIXME is it needed?
+    tellCompressed() const
     {
-        return 0;
+        return ZSTDSeek_compressedTell(sctx);
     }
 
     size_t
     size() const override
     {
-        return m_fileSize;
+        return ZSTDSeek_uncompressedFileSize(sctx);
     }
 
     size_t
@@ -157,7 +173,6 @@ public:
 private:
     ZSTDSeek_Context *sctx;
     bool m_closed;
-    size_t m_fileSize;
 
     std::map<size_t, size_t> m_blockToDataOffsets;
 
@@ -165,10 +180,12 @@ private:
     void buildBlocToDataOffsetsMap()
     {
         ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
+        if(jt->length == 0){
+            ZSTDSeek_initializeJumpTable(sctx);
+        }
         for(uint32_t i = 0; i < jt->length; i++){
             ZSTDSeek_JumpTableRecord r = jt->records[i];
             m_blockToDataOffsets.insert( { r.compressedPos, r.uncompressedPos } );
         }
-        m_fileSize = jt->uncompressedFileSize;
     }
 };
