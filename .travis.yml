@@ -10,10 +10,11 @@ python:
   - 3.5
   - 3.6
   - 3.7
+  - 3.8
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get -y install libzstd libzstd-dev g++
+  - sudo apt-get -y install libzstd-dev g++
 
 install:
   - test indexed_zstd/indexed_zstd.cpp -nt indexed_zstd/indexed_zstd.pyx ||
