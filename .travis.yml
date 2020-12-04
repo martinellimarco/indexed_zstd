@@ -1,0 +1,79 @@
+language: python
+
+os: linux
+
+git:
+  depth: 3
+  quiet: true
+
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install libzstd libzstd-dev g++
+
+install:
+  - test indexed_zstd/indexed_zstd.cpp -nt indexed_zstd/indexed_zstd.pyx ||
+    echo -e '\e[31mPlease trigger a rebuild of indexed_zstd.pyx using "python3 setup.py build_ext --inplace --cython" and commit the new file\e[0m'
+  - pip install --upgrade cython twine
+  - python3 setup.py build_ext --inplace --cython
+
+script:
+  # test whether installation from tarball works
+  - python3 setup.py sdist
+  - twine check dist/*
+  - pip install dist/*.tar.gz
+  # test zstd decoder
+  #- python3 test/test.py
+
+env:
+  global:
+    # travis encrypt --com TWINE_PASSWORD=...
+    - secure: "xCI/X6SleHYjePvJLVOnK50Y/rb7ajTok0h8quXK+P5T8gA/z4i2m46ky6I9WEfEqvMZDnqGVFpBLp0eN82dcEEUnC29a8cVsXyV11smsM83x2bmlZiobXccD3GAJEM1T0Pfa/ZirC5yxbYSXkmJrLhMef0R74DKeiOVNGS24HTbmXOdJ2g73pzm1CU2S4L9DkaCIH9rffmvueo0Rd/ghw11ToTW7xoBgQixfgZadfsLxrXUpVuPkcfq+shcT6Cf3zbHoz+20mIctQwLL1XjYKe6VLxKbXvpWbM4O0sSHCr4Y+bnuuuVZ5Y76l1J0SvTqUGGsxYEA9QWjmgm5TBwy2m67iqfiXW1M7qUs4LwKsF0w6dG+Xy3PNo8CWFx+++44VGcL4L/NI6ntGfK7PkzhhQCD6d/mojQXBz2MlzIpCrjEkR1eZ/3fqy6ZNpEpU3KZf56b/GPavBuIeSJ8upTDz3V3j4jy0Mc2L0VvgqSmwjdQCxO5e3wSjBRxt+n1NRzFl5PlJBc1cGJAT1iV4z78Hd+tAxRoa9P0RAoQXUv3AdVgyZs8VTRHEXJEK1UCnmvPGk1Wzy5SsSJAytwJu+pUlRTPE2GWhjd6jnq9yj83ebNl8gmohxKQWLQPG6qbd/VcqEB6EmSx4v4B+Dkgp98aoGVTm9m9dE/tZ7xjvrLs+g="
+
+jobs:
+  include:
+    - name: build-tarball
+      stage: deploy
+      script:
+        - python3 setup.py sdist
+        - twine check dist/*
+        - twine upload --skip-existing -u __token__ dist/*
+
+    - name: build manylinux1_x86_64
+      stage: deploy
+      services:
+        - docker
+      script:
+        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux1_x86_64 bash /project/manylinux/build-wheels.sh manylinux1_x86_64
+        - twine check dist/*
+        - twine upload --skip-existing -u __token__ dist/*
+
+    - name: build-manylinux1_i686
+      stage: deploy
+      services:
+        - docker
+      script:
+        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux1_i686 linux32 bash /project/manylinux/build-wheels.sh manylinux1_i686
+        - twine check dist/*
+        - twine upload --skip-existing -u __token__ dist/*
+
+    - name: build-manylinux2010_x86_64
+      stage: deploy
+      services:
+        - docker
+      script:
+        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux2010_x86_64 bash /project/manylinux/build-wheels.sh manylinux2010_x86_64
+        - twine check dist/*
+        - twine upload --skip-existing -u __token__ dist/*
+
+stages:
+  - name: test
+    # test with: travis-conditions eval "..." --data '{ "commit_message": "test string" }'
+    # after installing: gem install --user-install travis-conditions
+    if: NOT ( commit_message =~ /(^|[^A-Za-z])[Ww][Ii][Pp]([^A-Za-z]|$)/ )
+  - name: deploy
+    if: tag =~ /^v/
