@@ -86,14 +86,16 @@ public:
         if(m_closed){
             return true;
         }
-        return ZSTDSeek_uncompressedFileSize(sctx) == (size_t)ZSTDSeek_tell(sctx);
+        return size() == tell();
     }
 
     bool
     blockOffsetsComplete() const
     {
-        ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
-        return jt->length>0;
+        if(m_closed){
+            return false;
+        }
+        return ZSTDSeek_jumpTableIsInitialized(sctx) > 0;
     }
 
     /**
@@ -103,10 +105,10 @@ public:
     std::map<size_t, size_t>
     blockOffsets()
     {
-        if(!blockOffsetsComplete()) {
-            buildBlocToDataOffsetsMap();
+        if(!m_closed){
+            ZSTDSeek_initializeJumpTable(sctx);
         }
-        return m_blockToDataOffsets;
+        return availableBlockOffsets();
     }
 
     /**
@@ -117,22 +119,34 @@ public:
     std::map<size_t, size_t>
     availableBlockOffsets()
     {
-        return blockOffsets();
+        std::map<size_t, size_t> m_blockToDataOffsets;
+        if(!m_closed){
+            ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
+            for(uint32_t i = 0; i < jt->length; i++){
+                ZSTDSeek_JumpTableRecord r = jt->records[i];
+                m_blockToDataOffsets.insert( { r.compressedPos, r.uncompressedPos } );
+            }
+        }
+        return m_blockToDataOffsets;
     }
 
     void
     setBlockOffsets( std::map<size_t, size_t> offsets )
     {
-        ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
-        for (const auto& kv : offsets) {
-            ZSTDSeek_addJumpTableRecord(jt, kv.first, kv.second);
+        if(!m_closed){
+            ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
+            for (const auto& kv : offsets) {
+                ZSTDSeek_addJumpTableRecord(jt, kv.first, kv.second);
+            }
         }
-        buildBlocToDataOffsetsMap();
     }
 
     size_t
     tell() const override
     {
+        if(m_closed){
+            return 0;
+        }
         return  ZSTDSeek_tell(sctx);
     }
 
@@ -142,12 +156,18 @@ public:
     size_t
     tellCompressed() const
     {
+        if(m_closed){
+            return 0;
+        }
         return ZSTDSeek_compressedTell(sctx);
     }
 
     size_t
     size() const override
     {
+        if(m_closed){
+            return 0;
+        }
         return ZSTDSeek_uncompressedFileSize(sctx);
     }
 
@@ -155,6 +175,9 @@ public:
     seek( long long int offset,
           int           origin = SEEK_SET )
     {
+        if(m_closed){
+            return 0;
+        }
         ZSTDSeek_seek(sctx, offset, origin);
         return ZSTDSeek_tell(sctx);
     }
@@ -168,25 +191,13 @@ public:
           char* const  outputBuffer = nullptr,
           const size_t nBytesToRead = std::numeric_limits<size_t>::max() )
     {
+        if(m_closed){
+            return 0;
+        }
         return ZSTDSeek_read(outputBuffer, nBytesToRead, sctx);
     }
 
 private:
     ZSTDSeek_Context *sctx;
     bool m_closed;
-
-    std::map<size_t, size_t> m_blockToDataOffsets;
-
-private:
-    void buildBlocToDataOffsetsMap()
-    {
-        ZSTDSeek_JumpTable *jt = ZSTDSeek_getJumpTableOfContext(sctx);
-        if(jt->length == 0){
-            ZSTDSeek_initializeJumpTable(sctx);
-        }
-        for(uint32_t i = 0; i < jt->length; i++){
-            ZSTDSeek_JumpTableRecord r = jt->records[i];
-            m_blockToDataOffsets.insert( { r.compressedPos, r.uncompressedPos } );
-        }
-    }
 };

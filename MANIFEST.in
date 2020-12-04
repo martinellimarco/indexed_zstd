@@ -1,0 +1,8 @@
+include LICENSE
+include README.md
+recursive-include indexed_zstd *.py
+recursive-include indexed_zstd *.pyx
+recursive-include indexed_zstd *.c
+recursive-include indexed_zstd *.h
+recursive-include indexed_zstd *.cpp
+recursive-include indexed_zstd *.hpp

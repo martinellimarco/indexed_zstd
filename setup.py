@@ -35,7 +35,7 @@ setup(
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',
-    author           = 'Martinelli Marco & Maximilian Knespel',
+    author           = 'Martinelli Marco with help of Maximilian Knespel',
     license          = 'MIT',
     classifiers      = [ 'License :: OSI Approved :: MIT License',
                          'Development Status :: 3 - Alpha',
