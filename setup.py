@@ -31,14 +31,14 @@ with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file
 
 setup(
     name             = 'indexed_zstd',
-    version          = '1.0.0',
+    version          = '1.0.1',
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',
     author           = 'Martinelli Marco with help of Maximilian Knespel',
     license          = 'MIT',
     classifiers      = [ 'License :: OSI Approved :: MIT License',
-                         'Development Status :: 3 - Alpha',
+                         'Development Status :: 4 - Beta',
                          'Operating System :: POSIX',
                          'Operating System :: Unix',
                          'Programming Language :: Python :: 3',
