@@ -12,6 +12,7 @@ python:
   - 3.6
   - 3.7
   - 3.8
+  - 3.9
 
 before_install:
   - sudo apt-get update
@@ -45,30 +46,21 @@ jobs:
         - twine check dist/*
         - twine upload --skip-existing -u __token__ dist/*
 
-    - name: build manylinux1_x86_64
-      stage: deploy
-      services:
-        - docker
-      script:
-        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux1_x86_64 bash /project/manylinux/build-wheels.sh manylinux1_x86_64
-        - twine check dist/*
-        - twine upload --skip-existing -u __token__ dist/*
-
-    - name: build-manylinux1_i686
-      stage: deploy
-      services:
-        - docker
-      script:
-        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux1_i686 linux32 bash /project/manylinux/build-wheels.sh manylinux1_i686
-        - twine check dist/*
-        - twine upload --skip-existing -u __token__ dist/*
-
     - name: build-manylinux2010_x86_64
       stage: deploy
       services:
         - docker
       script:
         - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux2010_x86_64 bash /project/manylinux/build-wheels.sh manylinux2010_x86_64
+        - twine check dist/*
+        - twine upload --skip-existing -u __token__ dist/*
+
+    - name: build-manylinux2014_x86_64
+      stage: deploy
+      services:
+        - docker
+      script:
+        - docker run --rm -v "$( pwd ):/project" quay.io/pypa/manylinux2014_x86_64 bash /project/manylinux/build-wheels.sh manylinux2014_x86_64
         - twine check dist/*
         - twine upload --skip-existing -u __token__ dist/*
 

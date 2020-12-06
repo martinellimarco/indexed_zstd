@@ -3,18 +3,18 @@ set -e -x
 
 PLATFORM=$1
 
+yum -y update
+yum -y install libzstd-devel
+#yum -y install https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/Packages/l/libzstd-devel-1.4.5-3.el6.x86_64.rpm
+
 # Compile wheels
 for PYBIN in /opt/python/*3*/bin; do
 (
-    # use clean directory to fix the cryptic "Can't repair" error message
-    # of auditwheel seemingly caused by some leftover files
-    # auditwheel: error: cannot repair "wheelhouse/indexed_bzip2-1.0.0-cp37-cp37m-linux_x86_64.whl"
-    #             to "manylinux1_x86_64" ABI because of the presence of too-recent versioned symbols.
-    #             You'll need to compile the wheel on an older toolchain.
     buildFolder=$( mktemp -d )
     cd /project
     git worktree add "$buildFolder"
     cd -- "$buildFolder"
+    git submodule update
 
     "${PYBIN}/pip" wheel .  # Compile C++ source code and make wheels
     for wheel in *.whl; do
