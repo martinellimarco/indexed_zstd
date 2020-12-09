@@ -197,6 +197,24 @@ public:
         return ZSTDSeek_read(outputBuffer, nBytesToRead, sctx);
     }
 
+    size_t
+    numberOfFrames()
+    {
+        if(m_closed){
+            return 0;
+        }
+        return ZSTDSeek_getNumberOfFrames(sctx);
+    }
+
+    bool
+    isMultiframe()
+    {
+        if(m_closed){
+            return 0;
+        }
+        return ZSTDSeek_isMultiframe(sctx)!=0;
+    }
+
 private:
     ZSTDSeek_Context *sctx;
     bool m_closed;

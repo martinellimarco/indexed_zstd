@@ -35,6 +35,8 @@ cdef extern from "ZSTDReader.hpp":
         map[size_t, size_t] blockOffsets() except +
         map[size_t, size_t] availableBlockOffsets() except +
         void setBlockOffsets(map[size_t, size_t]) except +
+        size_t numberOfFrames() except +
+        bool isMultiframe() except +
 
 cdef class _IndexedZstdFile():
     cdef ZSTDReader* zstdreader
@@ -96,6 +98,12 @@ cdef class _IndexedZstdFile():
     def set_block_offsets(self, offsets):
         return self.zstdreader.setBlockOffsets(offsets)
 
+    def number_of_frames(self):
+        return self.zstdreader.numberOfFrames()
+
+    def is_multiframe(self):
+        return self.zstdreader.isMultiframe()
+
 
 # Extra class because cdefs are not visible from outside but cdef class can't inherit from io.BufferedIOBase
 
@@ -133,6 +141,8 @@ class IndexedZstdFile(io.BufferedReader):
         self.block_offsets_complete  = self.zstdreader.block_offsets_complete
         self.available_block_offsets = self.zstdreader.available_block_offsets
         self.size                    = self.zstdreader.size
+        self.number_of_frames        = self.zstdreader.number_of_frames
+        self.is_multiframe           = self.zstdreader.is_multiframe
 
         # Most of the calls like close, seekable, name, mode ... are forwarded to the given raw object
         # by BufferedReader or more specifically _BufferedIOMixin
