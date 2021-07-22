@@ -22,6 +22,7 @@ install:
   - test indexed_zstd/indexed_zstd.cpp -nt indexed_zstd/indexed_zstd.pyx ||
     echo -e '\e[31mPlease trigger a rebuild of indexed_zstd.pyx using "python3 setup.py build_ext --inplace --cython" and commit the new file\e[0m'
   - pip install --upgrade cython twine
+  - python3 setup.py build_clib
   - python3 setup.py build_ext --inplace --cython
 
 script:
