@@ -113,7 +113,15 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Install Dependencies
+    - name: Install System Dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get -y install libzstd-dev
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install zstd
+
+    - name: Install Python Dependencies
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
