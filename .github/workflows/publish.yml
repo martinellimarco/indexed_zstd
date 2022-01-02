@@ -36,7 +36,7 @@ jobs:
       if: matrix.manylinux-image == 'manylinux_2014' && matrix.os == 'ubuntu-latest'
       run: python3 setup.py sdist
 
-    - name: S
+    - name: Build Wheels
       env:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux-image }}

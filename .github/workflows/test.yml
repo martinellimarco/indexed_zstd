@@ -26,6 +26,7 @@ jobs:
     - name: Check committed Cython source
       run: |
         # Note that modification times can't be compared because they are changed by the git checkout
+        python3 setup.py build_clib
         python3 setup.py build_ext --inplace --cython
         git status
         git diff
