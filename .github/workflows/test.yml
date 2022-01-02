@@ -98,12 +98,7 @@ jobs:
         os: [macos-latest, ubuntu-latest]
         #os: [macos-latest, ubuntu-latest, windows-latest]
         # manylinux1 is not supported anymore because it won't compile C++17 code
-        manylinux-image: [manylinux2010, manylinux2014]
-        exclude:
-          - os: macos-latest
-            manylinux-image: manylinux2010
-          - os: windows-latest
-            manylinux-image: manylinux2010
+        manylinux-image: [manylinux2014, manylinux_2_24]
 
     steps:
     - uses: actions/checkout@v2
@@ -121,14 +116,15 @@ jobs:
         python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
 
     - name: Build Tarball
-      if: matrix.manylinux-image == 'manylinux_2014' && matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'ubuntu-latest'
       run: python3 setup.py sdist
 
     - name: Build Wheels
       env:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
+        CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_1
         CIBW_ARCHS: auto64
-        CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel
+        CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apt install -y libzstd-dev || apk add zstd-dev
         CIBW_BEFORE_ALL_MACOS: brew install zstd
         CIBW_BEFORE_ALL_WINDOWS: choco install zstandard
       run: python -m cibuildwheel --output-dir dist
