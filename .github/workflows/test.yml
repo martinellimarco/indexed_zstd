@@ -113,10 +113,12 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Install System Dependencies
+    - name: Install Ubuntu Dependencies
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get -y install libzstd-dev
+
+    - name: Install MacOS Dependencies
       if: matrix.os == 'macos-latest'
       run: |
         brew install zstd
