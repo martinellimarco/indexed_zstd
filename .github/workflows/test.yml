@@ -126,7 +126,9 @@ jobs:
       env:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux-image }}
-        CIBW_BEFORE_ALL_LINUX: ${{ matrix.os=='ubuntu-latest' && 'yum install -y libzstd-dev' || 'brew install zstd' }}
+        CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel
+        CIBW_BEFORE_ALL_MACOS: brew install zstd
+        CIBW_BEFORE_ALL_WINDOWS: choco install zstandard
       run: python -m cibuildwheel --output-dir dist
 
     - name: Check Wheels
