@@ -1,0 +1,129 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  Code-Checks:
+    name: Code Checks
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get -y install libzstd-dev clang g++ wget
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine numpy
+        
+    - name: System Information
+      run: |
+        nproc
+        g++ --version
+        clang++ --version
+
+    - name: Check committed Cython source
+      run: |
+        # Note that modification times can't be compared because they are changed by the git checkout
+        python3 setup.py build_ext --inplace --cython
+        git status
+        git diff
+        ls -la indexed_zstd/indexed_zstd.cpp
+        if ! git diff --quiet indexed_zstd/indexed_zstd.cpp; then
+          echo -e '\e[31mPlease trigger a rebuild of indexed_zstd.pyx using "python3 setup.py build_ext --inplace --cython" and commit the new file\e[0m'
+          git diff indexed_zstd/indexed_zstd.cpp
+        fi
+
+    - name: Install From Tarball
+      run: |
+        python3 setup.py sdist
+        twine check dist/*
+        python3 -m pip install dist/*.tar.gz
+
+  Tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # Oldest and newest versions should be enough. Python versions are supported 5 years from release date.
+        # 3.5 was released 2015-09-13 and end-of-life was 2020-09-13
+        # 3.6 was released 2016-12-23 and end-of-life will be 2021-12-23
+        # 3.7 was released 2018-06-27 and end-of-life will be 2023-06-27
+        # 3.8 was released 2019-10-14 and end-of-life will be 2024-10-14
+        # 3.9 was released 2020-10-05 and end-of-life will be 2025-10-25
+        # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
+        python-version: [3.6, 3.10]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get -y install libzstd-dev g++
+
+    - name: Install Python Modules
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade-strategy eager --upgrade cibuildwheel cython twine numpy
+
+    - name: Test Installation From Tarball
+      shell: bash
+      run: |
+        python3 setup.py sdist
+        twine check dist/*
+        python3 -m pip install dist/*.tar.gz
+
+    - name: Test ZSTD Decoder Python Package
+      # indexed_zstd should be installed for this step!
+      run: |
+        cd test
+        python3 test.py
+
+  Build-Wheels:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        # manylinux1 is not supported anymore because it won't compile C++17 code
+        manylinux-image: [manylinux2010, manylinux2014]
+        exclude:
+          - os: macos-latest
+            manylinux-image: manylinux2010
+          - os: windows-latest
+            manylinux-image: manylinux2010
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
+
+    - name: Build Tarball
+      if: matrix.manylinux-image == 'manylinux_2014' && matrix.os == 'ubuntu-latest'
+      run: python3 setup.py sdist
+
+    - name: Build Wheels
+      env:
+        CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
+        CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux-image }}
+      run: python -m cibuildwheel --output-dir dist
+
+    - name: Check Wheels
+      run: twine check dist/*
