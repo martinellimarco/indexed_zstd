@@ -54,7 +54,8 @@ jobs:
         # 3.9 was released 2020-10-05 and end-of-life will be 2025-10-25
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
         python-version: ['3.6', '3.10']
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
+        #os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v2
