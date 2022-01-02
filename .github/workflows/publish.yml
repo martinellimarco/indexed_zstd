@@ -14,12 +14,7 @@ jobs:
 #        os: [macos-latest, ubuntu-latest, windows-latest]
         os: [macos-latest, ubuntu-latest]
         # manylinux1 is not supported anymore because it won't compile C++17 code
-        manylinux-image: [manylinux2010, manylinux2014]
-        exclude:
-          - os: macos-latest
-            manylinux-image: manylinux2010
-          - os: windows-latest
-            manylinux-image: manylinux2010
+        manylinux-image: [manylinux2014]
 
     steps:
     - uses: actions/checkout@v2
