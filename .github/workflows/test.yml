@@ -127,7 +127,6 @@ jobs:
     - name: Build Wheels
       env:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
-        CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel
         CIBW_BEFORE_ALL_MACOS: brew install zstd
         CIBW_BEFORE_ALL_WINDOWS: choco install zstandard
