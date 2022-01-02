@@ -97,7 +97,6 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
         #os: [macos-latest, ubuntu-latest, windows-latest]
-        # manylinux1 is not supported anymore because it won't compile C++17 code
         manylinux-image: [manylinux2014]
 
     steps:
