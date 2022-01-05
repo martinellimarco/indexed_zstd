@@ -1,5 +1,12 @@
-# indexed_zstd
+[![PyPI version](https://badge.fury.io/py/indexed-zstd.svg)](https://badge.fury.io/py/indexed-zstd)
+[![Python Version](https://img.shields.io/pypi/pyversions/indexed_zstd)](https://pypi.org/project/indexed-zstd/)
+[![PyPI Platforms](https://img.shields.io/badge/pypi-linux%20%7C%20macOSs-brightgreen)](https://pypi.org/project/indexed-zstd/)
+[![Downloads](https://pepy.tech/badge/indexed-zstd/month)](https://pepy.tech/project/indexed-zstd)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://github.com/martinellimarco/indexed_zstd/workflows/tests/badge.svg)](https://github.com/martinellimarco/indexed_zstd/actions)
+![C++17](https://img.shields.io/badge/C++-17-blue.svg?style=flat-square)
 
+# indexed_zstd
 
 This module provides an IndexedZstdFile class, which can be used to seek inside zstd files without having to decompress them first.
 

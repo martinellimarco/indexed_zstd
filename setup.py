@@ -16,8 +16,8 @@ extensions = [
                             else [ 'indexed_zstd/indexed_zstd.cpp' ],
         include_dirs       = [ '.' ],
         language           = 'c++',
-        extra_compile_args = [ '-std=c++11', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin"
-                             else [ '-std=c++11', '-O3', '-DNDEBUG' ],
+        extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin"
+                             else [ '-std=c++17', '-O3', '-DNDEBUG' ],
         extra_link_args=[ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin" else [ '-lzstd' ],
         libraries = [ 'm' ],
     ),
