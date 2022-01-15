@@ -4,7 +4,8 @@
 [![Downloads](https://pepy.tech/badge/indexed-zstd/month)](https://pepy.tech/project/indexed-zstd)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/martinellimarco/indexed_zstd/workflows/tests/badge.svg)](https://github.com/martinellimarco/indexed_zstd/actions)
-![C++17](https://img.shields.io/badge/C++-17-blue.svg?style=flat-square)
+![C++17](https://img.shields.io/badge/C++-17-blue.svg)
+[![AUR version](https://img.shields.io/aur/version/python-indexed-zstd)](https://aur.archlinux.org/packages/python-indexed-zstd/)
 
 # indexed_zstd
 
