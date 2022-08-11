@@ -39,7 +39,7 @@ with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file
 
 setup(
     name             = 'indexed_zstd',
-    version          = '1.5.0',
+    version          = '1.5.1',
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',

@@ -77,6 +77,9 @@ cdef class _IndexedZstdFile():
     def seek(self, offset, whence):
         return self.zstdreader.seek(offset, whence)
 
+    def seek(self, offset):
+        return self.zstdreader.seek(offset, SEEK_SET)
+
     def tell(self):
         return self.zstdreader.tell()
 
