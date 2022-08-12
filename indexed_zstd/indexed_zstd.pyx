@@ -74,7 +74,7 @@ cdef class _IndexedZstdFile():
 
         return bytes_count
 
-    def seek(self, offset, whence):
+    def seek(self, offset, whence = io.SEEK_SET):
         return self.zstdreader.seek(offset, whence)
 
     def tell(self):
