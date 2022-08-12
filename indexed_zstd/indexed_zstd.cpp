@@ -1659,6 +1659,7 @@ static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_whence[] = "whence";
 static const char __pyx_k_prepare[] = "__prepare__";
 static const char __pyx_k_version[] = "__version__";
+static const char __pyx_k_SEEK_SET[] = "SEEK_SET";
 static const char __pyx_k_filename[] = "filename";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_qualname[] = "__qualname__";
@@ -1705,6 +1706,7 @@ static PyObject *__pyx_n_s_IndexedZstdFileRaw_readable;
 static PyObject *__pyx_n_s_IndexedZstdFile_2;
 static PyObject *__pyx_n_s_IndexedZstdFile___init;
 static PyObject *__pyx_n_s_RawIOBase;
+static PyObject *__pyx_n_s_SEEK_SET;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_available_block_offsets;
 static PyObject *__pyx_n_s_block_offsets;
@@ -1768,34 +1770,34 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_8fileno(struct __pyx
 static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_10seekable(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_12readinto(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_bytes_like); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_14seek(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offset, PyObject *__pyx_v_whence); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_16seek(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_complete(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offsets); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_38__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_16tell(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18size(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20tell_compressed(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22block_offsets_complete(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26available_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28set_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offsets); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30number_of_frames(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32is_multiframe(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_filename); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_4readable(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_12indexed_zstd_15IndexedZstdFile___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_filename); /* proto */
 static PyObject *__pyx_tp_new_12indexed_zstd__IndexedZstdFile(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_1048576;
-static PyObject *__pyx_tuple_;
+static PyObject *__pyx_k_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
-static PyObject *__pyx_tuple__5;
-static PyObject *__pyx_tuple__7;
-static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_codeobj__4;
-static PyObject *__pyx_codeobj__6;
-static PyObject *__pyx_codeobj__8;
-static PyObject *__pyx_codeobj__10;
+static PyObject *__pyx_tuple__4;
+static PyObject *__pyx_tuple__6;
+static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_codeobj__5;
+static PyObject *__pyx_codeobj__7;
+static PyObject *__pyx_codeobj__9;
+static PyObject *__pyx_codeobj__11;
 /* Late includes */
 
 /* "indexed_zstd.pyx":44
@@ -2425,7 +2427,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_12readinto(struct __
  * 
  *         return bytes_count             # <<<<<<<<<<<<<<
  * 
- *     def seek(self, offset, whence):
+ *     def seek(self, offset, whence = io.SEEK_SET):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_11 = __Pyx_PyInt_From_long(__pyx_v_bytes_count); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 75, __pyx_L1_error)
@@ -2456,7 +2458,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_12readinto(struct __
 /* "indexed_zstd.pyx":77
  *         return bytes_count
  * 
- *     def seek(self, offset, whence):             # <<<<<<<<<<<<<<
+ *     def seek(self, offset, whence = io.SEEK_SET):             # <<<<<<<<<<<<<<
  *         return self.zstdreader.seek(offset, whence)
  * 
  */
@@ -2475,6 +2477,7 @@ static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_15seek(PyObject *__p
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_offset,&__pyx_n_s_whence,0};
     PyObject* values[2] = {0,0};
+    values[1] = __pyx_k_;
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -2493,26 +2496,29 @@ static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_15seek(PyObject *__p
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_whence)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("seek", 1, 2, 2, 1); __PYX_ERR(1, 77, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_whence);
+          if (value) { values[1] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "seek") < 0)) __PYX_ERR(1, 77, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
     __pyx_v_offset = values[0];
     __pyx_v_whence = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("seek", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 77, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("seek", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 77, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("indexed_zstd._IndexedZstdFile.seek", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2539,10 +2545,10 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_14seek(struct __pyx_
 
   /* "indexed_zstd.pyx":78
  * 
- *     def seek(self, offset, whence):
+ *     def seek(self, offset, whence = io.SEEK_SET):
  *         return self.zstdreader.seek(offset, whence)             # <<<<<<<<<<<<<<
  * 
- *     def seek(self, offset):
+ *     def tell(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_offset); if (unlikely((__pyx_t_1 == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(1, 78, __pyx_L1_error)
@@ -2562,7 +2568,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_14seek(struct __pyx_
   /* "indexed_zstd.pyx":77
  *         return bytes_count
  * 
- *     def seek(self, offset, whence):             # <<<<<<<<<<<<<<
+ *     def seek(self, offset, whence = io.SEEK_SET):             # <<<<<<<<<<<<<<
  *         return self.zstdreader.seek(offset, whence)
  * 
  */
@@ -2581,97 +2587,25 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_14seek(struct __pyx_
 /* "indexed_zstd.pyx":80
  *         return self.zstdreader.seek(offset, whence)
  * 
- *     def seek(self, offset):             # <<<<<<<<<<<<<<
- *         return self.zstdreader.seek(offset, SEEK_SET)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17seek(PyObject *__pyx_v_self, PyObject *__pyx_v_offset); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17seek(PyObject *__pyx_v_self, PyObject *__pyx_v_offset) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("seek (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_16seek(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self), ((PyObject *)__pyx_v_offset));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_16seek(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offset) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __pyx_t_12indexed_zstd_lli __pyx_t_1;
-  size_t __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("seek", 0);
-
-  /* "indexed_zstd.pyx":81
- * 
- *     def seek(self, offset):
- *         return self.zstdreader.seek(offset, SEEK_SET)             # <<<<<<<<<<<<<<
- * 
- *     def tell(self):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_offset); if (unlikely((__pyx_t_1 == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(1, 81, __pyx_L1_error)
-  try {
-    __pyx_t_2 = __pyx_v_self->zstdreader->seek(__pyx_t_1, SEEK_SET);
-  } catch(...) {
-    __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 81, __pyx_L1_error)
-  }
-  __pyx_t_3 = __Pyx_PyInt_FromSize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
-  goto __pyx_L0;
-
-  /* "indexed_zstd.pyx":80
- *         return self.zstdreader.seek(offset, whence)
- * 
- *     def seek(self, offset):             # <<<<<<<<<<<<<<
- *         return self.zstdreader.seek(offset, SEEK_SET)
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("indexed_zstd._IndexedZstdFile.seek", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "indexed_zstd.pyx":83
- *         return self.zstdreader.seek(offset, SEEK_SET)
- * 
  *     def tell(self):             # <<<<<<<<<<<<<<
  *         return self.zstdreader.tell()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19tell(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19tell(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17tell(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17tell(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("tell (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_16tell(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_16tell(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
@@ -2681,7 +2615,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tell", 0);
 
-  /* "indexed_zstd.pyx":84
+  /* "indexed_zstd.pyx":81
  * 
  *     def tell(self):
  *         return self.zstdreader.tell()             # <<<<<<<<<<<<<<
@@ -2693,16 +2627,16 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_
     __pyx_t_1 = __pyx_v_self->zstdreader->tell();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 84, __pyx_L1_error)
+    __PYX_ERR(1, 81, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":83
- *         return self.zstdreader.seek(offset, SEEK_SET)
+  /* "indexed_zstd.pyx":80
+ *         return self.zstdreader.seek(offset, whence)
  * 
  *     def tell(self):             # <<<<<<<<<<<<<<
  *         return self.zstdreader.tell()
@@ -2720,7 +2654,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":86
+/* "indexed_zstd.pyx":83
  *         return self.zstdreader.tell()
  * 
  *     def size(self):             # <<<<<<<<<<<<<<
@@ -2729,19 +2663,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18tell(struct __pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21size(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21size(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19size(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19size(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("size (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_18size(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_18size(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
@@ -2751,7 +2685,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("size", 0);
 
-  /* "indexed_zstd.pyx":87
+  /* "indexed_zstd.pyx":84
  * 
  *     def size(self):
  *         return self.zstdreader.size()             # <<<<<<<<<<<<<<
@@ -2763,15 +2697,15 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_
     __pyx_t_1 = __pyx_v_self->zstdreader->size();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 87, __pyx_L1_error)
+    __PYX_ERR(1, 84, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":86
+  /* "indexed_zstd.pyx":83
  *         return self.zstdreader.tell()
  * 
  *     def size(self):             # <<<<<<<<<<<<<<
@@ -2790,7 +2724,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":89
+/* "indexed_zstd.pyx":86
  *         return self.zstdreader.size()
  * 
  *     def tell_compressed(self):             # <<<<<<<<<<<<<<
@@ -2799,19 +2733,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20size(struct __pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23tell_compressed(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23tell_compressed(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21tell_compressed(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21tell_compressed(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("tell_compressed (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_20tell_compressed(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_20tell_compressed(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
@@ -2821,7 +2755,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tell_compressed", 0);
 
-  /* "indexed_zstd.pyx":90
+  /* "indexed_zstd.pyx":87
  * 
  *     def tell_compressed(self):
  *         return self.zstdreader.tellCompressed()             # <<<<<<<<<<<<<<
@@ -2833,15 +2767,15 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(st
     __pyx_t_1 = __pyx_v_self->zstdreader->tellCompressed();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 90, __pyx_L1_error)
+    __PYX_ERR(1, 87, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 90, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":89
+  /* "indexed_zstd.pyx":86
  *         return self.zstdreader.size()
  * 
  *     def tell_compressed(self):             # <<<<<<<<<<<<<<
@@ -2860,7 +2794,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(st
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":92
+/* "indexed_zstd.pyx":89
  *         return self.zstdreader.tellCompressed()
  * 
  *     def block_offsets_complete(self):             # <<<<<<<<<<<<<<
@@ -2869,19 +2803,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22tell_compressed(st
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets_complete(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets_complete(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23block_offsets_complete(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23block_offsets_complete(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("block_offsets_complete (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_complete(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_22block_offsets_complete(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_complete(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_22block_offsets_complete(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   bool __pyx_t_1;
@@ -2891,7 +2825,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_comp
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("block_offsets_complete", 0);
 
-  /* "indexed_zstd.pyx":93
+  /* "indexed_zstd.pyx":90
  * 
  *     def block_offsets_complete(self):
  *         return self.zstdreader.blockOffsetsComplete()             # <<<<<<<<<<<<<<
@@ -2903,15 +2837,15 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_comp
     __pyx_t_1 = __pyx_v_self->zstdreader->blockOffsetsComplete();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 93, __pyx_L1_error)
+    __PYX_ERR(1, 90, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 93, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":92
+  /* "indexed_zstd.pyx":89
  *         return self.zstdreader.tellCompressed()
  * 
  *     def block_offsets_complete(self):             # <<<<<<<<<<<<<<
@@ -2930,7 +2864,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_comp
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":95
+/* "indexed_zstd.pyx":92
  *         return self.zstdreader.blockOffsetsComplete()
  * 
  *     def block_offsets(self):             # <<<<<<<<<<<<<<
@@ -2939,19 +2873,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets_comp
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("block_offsets (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_24block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   std::map<size_t,size_t>  __pyx_t_1;
@@ -2961,7 +2895,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("block_offsets", 0);
 
-  /* "indexed_zstd.pyx":96
+  /* "indexed_zstd.pyx":93
  * 
  *     def block_offsets(self):
  *         return <dict>self.zstdreader.blockOffsets()             # <<<<<<<<<<<<<<
@@ -2973,17 +2907,17 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(stru
     __pyx_t_1 = __pyx_v_self->zstdreader->blockOffsets();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 96, __pyx_L1_error)
+    __PYX_ERR(1, 93, __pyx_L1_error)
   }
-  __pyx_t_2 = __pyx_convert_map_to_py_size_t____size_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 96, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_map_to_py_size_t____size_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(PyDict_CheckExact(__pyx_t_2))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(1, 96, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_t_2))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(1, 93, __pyx_L1_error)
   __Pyx_INCREF(((PyObject*)__pyx_t_2));
   __pyx_r = __pyx_t_2;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":95
+  /* "indexed_zstd.pyx":92
  *         return self.zstdreader.blockOffsetsComplete()
  * 
  *     def block_offsets(self):             # <<<<<<<<<<<<<<
@@ -3002,7 +2936,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(stru
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":98
+/* "indexed_zstd.pyx":95
  *         return <dict>self.zstdreader.blockOffsets()
  * 
  *     def available_block_offsets(self):             # <<<<<<<<<<<<<<
@@ -3011,19 +2945,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26block_offsets(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29available_block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29available_block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27available_block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27available_block_offsets(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("available_block_offsets (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_26available_block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_26available_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   std::map<size_t,size_t>  __pyx_t_1;
@@ -3033,7 +2967,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_of
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("available_block_offsets", 0);
 
-  /* "indexed_zstd.pyx":99
+  /* "indexed_zstd.pyx":96
  * 
  *     def available_block_offsets(self):
  *         return <dict>self.zstdreader.availableBlockOffsets()             # <<<<<<<<<<<<<<
@@ -3045,17 +2979,17 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_of
     __pyx_t_1 = __pyx_v_self->zstdreader->availableBlockOffsets();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 99, __pyx_L1_error)
+    __PYX_ERR(1, 96, __pyx_L1_error)
   }
-  __pyx_t_2 = __pyx_convert_map_to_py_size_t____size_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 99, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_map_to_py_size_t____size_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(PyDict_CheckExact(__pyx_t_2))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_t_2))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(1, 96, __pyx_L1_error)
   __Pyx_INCREF(((PyObject*)__pyx_t_2));
   __pyx_r = __pyx_t_2;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":98
+  /* "indexed_zstd.pyx":95
  *         return <dict>self.zstdreader.blockOffsets()
  * 
  *     def available_block_offsets(self):             # <<<<<<<<<<<<<<
@@ -3074,7 +3008,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_of
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":101
+/* "indexed_zstd.pyx":98
  *         return <dict>self.zstdreader.availableBlockOffsets()
  * 
  *     def set_block_offsets(self, offsets):             # <<<<<<<<<<<<<<
@@ -3083,19 +3017,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28available_block_of
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31set_block_offsets(PyObject *__pyx_v_self, PyObject *__pyx_v_offsets); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31set_block_offsets(PyObject *__pyx_v_self, PyObject *__pyx_v_offsets) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29set_block_offsets(PyObject *__pyx_v_self, PyObject *__pyx_v_offsets); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29set_block_offsets(PyObject *__pyx_v_self, PyObject *__pyx_v_offsets) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_block_offsets (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self), ((PyObject *)__pyx_v_offsets));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_28set_block_offsets(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self), ((PyObject *)__pyx_v_offsets));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offsets) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_28set_block_offsets(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, PyObject *__pyx_v_offsets) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   std::map<size_t,size_t>  __pyx_t_1;
@@ -3105,7 +3039,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_block_offsets", 0);
 
-  /* "indexed_zstd.pyx":102
+  /* "indexed_zstd.pyx":99
  * 
  *     def set_block_offsets(self, offsets):
  *         return self.zstdreader.setBlockOffsets(offsets)             # <<<<<<<<<<<<<<
@@ -3113,20 +3047,20 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(
  *     def number_of_frames(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_map_from_py_size_t__and_size_t(__pyx_v_offsets); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 102, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_map_from_py_size_t__and_size_t(__pyx_v_offsets); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
   try {
     __pyx_v_self->zstdreader->setBlockOffsets(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 102, __pyx_L1_error)
+    __PYX_ERR(1, 99, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 102, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":101
+  /* "indexed_zstd.pyx":98
  *         return <dict>self.zstdreader.availableBlockOffsets()
  * 
  *     def set_block_offsets(self, offsets):             # <<<<<<<<<<<<<<
@@ -3145,7 +3079,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":104
+/* "indexed_zstd.pyx":101
  *         return self.zstdreader.setBlockOffsets(offsets)
  * 
  *     def number_of_frames(self):             # <<<<<<<<<<<<<<
@@ -3154,19 +3088,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30set_block_offsets(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33number_of_frames(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33number_of_frames(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31number_of_frames(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31number_of_frames(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("number_of_frames (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_30number_of_frames(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_30number_of_frames(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
@@ -3176,7 +3110,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("number_of_frames", 0);
 
-  /* "indexed_zstd.pyx":105
+  /* "indexed_zstd.pyx":102
  * 
  *     def number_of_frames(self):
  *         return self.zstdreader.numberOfFrames()             # <<<<<<<<<<<<<<
@@ -3188,15 +3122,15 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(s
     __pyx_t_1 = __pyx_v_self->zstdreader->numberOfFrames();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 105, __pyx_L1_error)
+    __PYX_ERR(1, 102, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":104
+  /* "indexed_zstd.pyx":101
  *         return self.zstdreader.setBlockOffsets(offsets)
  * 
  *     def number_of_frames(self):             # <<<<<<<<<<<<<<
@@ -3215,7 +3149,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(s
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":107
+/* "indexed_zstd.pyx":104
  *         return self.zstdreader.numberOfFrames()
  * 
  *     def is_multiframe(self):             # <<<<<<<<<<<<<<
@@ -3224,19 +3158,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32number_of_frames(s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35is_multiframe(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35is_multiframe(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33is_multiframe(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33is_multiframe(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_multiframe (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_32is_multiframe(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_32is_multiframe(struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   bool __pyx_t_1;
@@ -3246,7 +3180,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_multiframe", 0);
 
-  /* "indexed_zstd.pyx":108
+  /* "indexed_zstd.pyx":105
  * 
  *     def is_multiframe(self):
  *         return self.zstdreader.isMultiframe()             # <<<<<<<<<<<<<<
@@ -3258,15 +3192,15 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(stru
     __pyx_t_1 = __pyx_v_self->zstdreader->isMultiframe();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 108, __pyx_L1_error)
+    __PYX_ERR(1, 105, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":107
+  /* "indexed_zstd.pyx":104
  *         return self.zstdreader.numberOfFrames()
  * 
  *     def is_multiframe(self):             # <<<<<<<<<<<<<<
@@ -3292,19 +3226,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34is_multiframe(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__reduce_cython__(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_34__reduce_cython__(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3319,7 +3253,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__reduce_cython__(
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3349,19 +3283,19 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__reduce_cython__(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_39__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_39__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_38__setstate_cython__(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__setstate_cython__(((struct __pyx_obj_12indexed_zstd__IndexedZstdFile *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_38__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12indexed_zstd__IndexedZstdFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3375,7 +3309,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_38__setstate_cython_
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3398,7 +3332,7 @@ static PyObject *__pyx_pf_12indexed_zstd_16_IndexedZstdFile_38__setstate_cython_
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":114
+/* "indexed_zstd.pyx":111
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -3441,11 +3375,11 @@ static PyObject *__pyx_pw_12indexed_zstd_18IndexedZstdFileRaw_1__init__(PyObject
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_filename)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(1, 114, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(1, 111, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 114, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 111, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3458,7 +3392,7 @@ static PyObject *__pyx_pw_12indexed_zstd_18IndexedZstdFileRaw_1__init__(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 114, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 111, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("indexed_zstd.IndexedZstdFileRaw.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3481,112 +3415,112 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw___init__(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "indexed_zstd.pyx":115
+  /* "indexed_zstd.pyx":112
  * class IndexedZstdFileRaw(io.RawIOBase):
  *     def __init__(self, filename):
  *         self.zstdreader = _IndexedZstdFile(filename)             # <<<<<<<<<<<<<<
  *         self.name = filename
  *         self.mode = 'rb'
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12indexed_zstd__IndexedZstdFile), __pyx_v_filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12indexed_zstd__IndexedZstdFile), __pyx_v_filename); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader, __pyx_t_1) < 0) __PYX_ERR(1, 115, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader, __pyx_t_1) < 0) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":116
+  /* "indexed_zstd.pyx":113
  *     def __init__(self, filename):
  *         self.zstdreader = _IndexedZstdFile(filename)
  *         self.name = filename             # <<<<<<<<<<<<<<
  *         self.mode = 'rb'
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_name, __pyx_v_filename) < 0) __PYX_ERR(1, 116, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_name, __pyx_v_filename) < 0) __PYX_ERR(1, 113, __pyx_L1_error)
 
-  /* "indexed_zstd.pyx":117
+  /* "indexed_zstd.pyx":114
  *         self.zstdreader = _IndexedZstdFile(filename)
  *         self.name = filename
  *         self.mode = 'rb'             # <<<<<<<<<<<<<<
  * 
  *         self.readinto = self.zstdreader.readinto
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mode, __pyx_n_u_rb) < 0) __PYX_ERR(1, 117, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mode, __pyx_n_u_rb) < 0) __PYX_ERR(1, 114, __pyx_L1_error)
 
-  /* "indexed_zstd.pyx":119
+  /* "indexed_zstd.pyx":116
  *         self.mode = 'rb'
  * 
  *         self.readinto = self.zstdreader.readinto             # <<<<<<<<<<<<<<
  *         self.seek     = self.zstdreader.seek
  *         self.tell     = self.zstdreader.tell
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_readinto); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_readinto); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_readinto, __pyx_t_2) < 0) __PYX_ERR(1, 119, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_readinto, __pyx_t_2) < 0) __PYX_ERR(1, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":120
+  /* "indexed_zstd.pyx":117
  * 
  *         self.readinto = self.zstdreader.readinto
  *         self.seek     = self.zstdreader.seek             # <<<<<<<<<<<<<<
  *         self.tell     = self.zstdreader.tell
  *         self.fileno   = self.zstdreader.fileno
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 120, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_seek); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_seek); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_seek, __pyx_t_1) < 0) __PYX_ERR(1, 120, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_seek, __pyx_t_1) < 0) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":121
+  /* "indexed_zstd.pyx":118
  *         self.readinto = self.zstdreader.readinto
  *         self.seek     = self.zstdreader.seek
  *         self.tell     = self.zstdreader.tell             # <<<<<<<<<<<<<<
  *         self.fileno   = self.zstdreader.fileno
  *         self.seekable = self.zstdreader.seekable
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tell); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tell); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tell, __pyx_t_2) < 0) __PYX_ERR(1, 121, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tell, __pyx_t_2) < 0) __PYX_ERR(1, 118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":122
+  /* "indexed_zstd.pyx":119
  *         self.seek     = self.zstdreader.seek
  *         self.tell     = self.zstdreader.tell
  *         self.fileno   = self.zstdreader.fileno             # <<<<<<<<<<<<<<
  *         self.seekable = self.zstdreader.seekable
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fileno); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fileno); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_fileno, __pyx_t_1) < 0) __PYX_ERR(1, 122, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_fileno, __pyx_t_1) < 0) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":123
+  /* "indexed_zstd.pyx":120
  *         self.tell     = self.zstdreader.tell
  *         self.fileno   = self.zstdreader.fileno
  *         self.seekable = self.zstdreader.seekable             # <<<<<<<<<<<<<<
  * 
  *         # IOBase provides sane default implementations for read, readline, readlines, readall, ...
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 123, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_seekable); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 123, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_seekable); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_seekable, __pyx_t_2) < 0) __PYX_ERR(1, 123, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_seekable, __pyx_t_2) < 0) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":114
+  /* "indexed_zstd.pyx":111
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -3608,7 +3542,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw___init__(CYTHON_UN
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":127
+/* "indexed_zstd.pyx":124
  *         # IOBase provides sane default implementations for read, readline, readlines, readall, ...
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -3642,20 +3576,20 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("close", 0);
 
-  /* "indexed_zstd.pyx":128
+  /* "indexed_zstd.pyx":125
  * 
  *     def close(self):
  *         if self.closed:             # <<<<<<<<<<<<<<
  *             return
  *         super().close()
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_closed); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 128, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_closed); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 128, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "indexed_zstd.pyx":129
+    /* "indexed_zstd.pyx":126
  *     def close(self):
  *         if self.closed:
  *             return             # <<<<<<<<<<<<<<
@@ -3666,7 +3600,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "indexed_zstd.pyx":128
+    /* "indexed_zstd.pyx":125
  * 
  *     def close(self):
  *         if self.closed:             # <<<<<<<<<<<<<<
@@ -3675,7 +3609,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
  */
   }
 
-  /* "indexed_zstd.pyx":130
+  /* "indexed_zstd.pyx":127
  *         if self.closed:
  *             return
  *         super().close()             # <<<<<<<<<<<<<<
@@ -3683,9 +3617,9 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
  * 
  */
   __pyx_t_3 = __Pyx_CyFunction_GetClassObj(__pyx_self);
-  if (!__pyx_t_3) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(1, 130, __pyx_L1_error) }
+  if (!__pyx_t_3) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(1, 127, __pyx_L1_error) }
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
@@ -3693,10 +3627,10 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
   __Pyx_GIVEREF(__pyx_v_self);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_self);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_close); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_close); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -3711,21 +3645,21 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 130, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":131
+  /* "indexed_zstd.pyx":128
  *             return
  *         super().close()
  *         self.zstdreader.close()             # <<<<<<<<<<<<<<
  * 
  *     def readable(self):
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 131, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_close); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 131, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_close); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -3740,12 +3674,12 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 131, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":127
+  /* "indexed_zstd.pyx":124
  *         # IOBase provides sane default implementations for read, readline, readlines, readall, ...
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -3768,7 +3702,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_2close(CYTHON_UNUS
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":133
+/* "indexed_zstd.pyx":130
  *         self.zstdreader.close()
  * 
  *     def readable(self):             # <<<<<<<<<<<<<<
@@ -3795,7 +3729,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_4readable(CYTHON_U
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("readable", 0);
 
-  /* "indexed_zstd.pyx":134
+  /* "indexed_zstd.pyx":131
  * 
  *     def readable(self):
  *         return True             # <<<<<<<<<<<<<<
@@ -3807,7 +3741,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_4readable(CYTHON_U
   __pyx_r = Py_True;
   goto __pyx_L0;
 
-  /* "indexed_zstd.pyx":133
+  /* "indexed_zstd.pyx":130
  *         self.zstdreader.close()
  * 
  *     def readable(self):             # <<<<<<<<<<<<<<
@@ -3822,7 +3756,7 @@ static PyObject *__pyx_pf_12indexed_zstd_18IndexedZstdFileRaw_4readable(CYTHON_U
   return __pyx_r;
 }
 
-/* "indexed_zstd.pyx":137
+/* "indexed_zstd.pyx":134
  * 
  * class IndexedZstdFile(io.BufferedReader):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -3865,11 +3799,11 @@ static PyObject *__pyx_pw_12indexed_zstd_15IndexedZstdFile_1__init__(PyObject *_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_filename)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(1, 137, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(1, 134, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 137, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 134, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3882,7 +3816,7 @@ static PyObject *__pyx_pw_12indexed_zstd_15IndexedZstdFile_1__init__(PyObject *_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 137, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 134, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("indexed_zstd.IndexedZstdFile.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3908,14 +3842,14 @@ static PyObject *__pyx_pf_12indexed_zstd_15IndexedZstdFile___init__(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "indexed_zstd.pyx":138
+  /* "indexed_zstd.pyx":135
  * class IndexedZstdFile(io.BufferedReader):
  *     def __init__(self, filename):
  *         fobj = IndexedZstdFileRaw(filename)             # <<<<<<<<<<<<<<
  *         self.zstdreader = fobj.zstdreader
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_IndexedZstdFileRaw); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_IndexedZstdFileRaw); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -3929,145 +3863,145 @@ static PyObject *__pyx_pf_12indexed_zstd_15IndexedZstdFile___init__(CYTHON_UNUSE
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_filename) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_filename);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 138, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_fobj = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":139
+  /* "indexed_zstd.pyx":136
  *     def __init__(self, filename):
  *         fobj = IndexedZstdFileRaw(filename)
  *         self.zstdreader = fobj.zstdreader             # <<<<<<<<<<<<<<
  * 
  *         self.tell_compressed         = self.zstdreader.tell_compressed
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fobj, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 139, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fobj, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader, __pyx_t_1) < 0) __PYX_ERR(1, 139, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader, __pyx_t_1) < 0) __PYX_ERR(1, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":141
+  /* "indexed_zstd.pyx":138
  *         self.zstdreader = fobj.zstdreader
  * 
  *         self.tell_compressed         = self.zstdreader.tell_compressed             # <<<<<<<<<<<<<<
  *         self.block_offsets           = self.zstdreader.block_offsets
  *         self.set_block_offsets       = self.zstdreader.set_block_offsets
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tell_compressed); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tell_compressed); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tell_compressed, __pyx_t_2) < 0) __PYX_ERR(1, 141, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tell_compressed, __pyx_t_2) < 0) __PYX_ERR(1, 138, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":142
+  /* "indexed_zstd.pyx":139
  * 
  *         self.tell_compressed         = self.zstdreader.tell_compressed
  *         self.block_offsets           = self.zstdreader.block_offsets             # <<<<<<<<<<<<<<
  *         self.set_block_offsets       = self.zstdreader.set_block_offsets
  *         self.block_offsets_complete  = self.zstdreader.block_offsets_complete
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_block_offsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_block_offsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_block_offsets, __pyx_t_1) < 0) __PYX_ERR(1, 142, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_block_offsets, __pyx_t_1) < 0) __PYX_ERR(1, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":143
+  /* "indexed_zstd.pyx":140
  *         self.tell_compressed         = self.zstdreader.tell_compressed
  *         self.block_offsets           = self.zstdreader.block_offsets
  *         self.set_block_offsets       = self.zstdreader.set_block_offsets             # <<<<<<<<<<<<<<
  *         self.block_offsets_complete  = self.zstdreader.block_offsets_complete
  *         self.available_block_offsets = self.zstdreader.available_block_offsets
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 143, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_set_block_offsets); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 143, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_set_block_offsets); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_set_block_offsets, __pyx_t_2) < 0) __PYX_ERR(1, 143, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_set_block_offsets, __pyx_t_2) < 0) __PYX_ERR(1, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":144
+  /* "indexed_zstd.pyx":141
  *         self.block_offsets           = self.zstdreader.block_offsets
  *         self.set_block_offsets       = self.zstdreader.set_block_offsets
  *         self.block_offsets_complete  = self.zstdreader.block_offsets_complete             # <<<<<<<<<<<<<<
  *         self.available_block_offsets = self.zstdreader.available_block_offsets
  *         self.size                    = self.zstdreader.size
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 144, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_block_offsets_complete); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 144, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_block_offsets_complete); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_block_offsets_complete, __pyx_t_1) < 0) __PYX_ERR(1, 144, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_block_offsets_complete, __pyx_t_1) < 0) __PYX_ERR(1, 141, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":145
+  /* "indexed_zstd.pyx":142
  *         self.set_block_offsets       = self.zstdreader.set_block_offsets
  *         self.block_offsets_complete  = self.zstdreader.block_offsets_complete
  *         self.available_block_offsets = self.zstdreader.available_block_offsets             # <<<<<<<<<<<<<<
  *         self.size                    = self.zstdreader.size
  *         self.number_of_frames        = self.zstdreader.number_of_frames
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 145, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_available_block_offsets); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_available_block_offsets); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_available_block_offsets, __pyx_t_2) < 0) __PYX_ERR(1, 145, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_available_block_offsets, __pyx_t_2) < 0) __PYX_ERR(1, 142, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":146
+  /* "indexed_zstd.pyx":143
  *         self.block_offsets_complete  = self.zstdreader.block_offsets_complete
  *         self.available_block_offsets = self.zstdreader.available_block_offsets
  *         self.size                    = self.zstdreader.size             # <<<<<<<<<<<<<<
  *         self.number_of_frames        = self.zstdreader.number_of_frames
  *         self.is_multiframe           = self.zstdreader.is_multiframe
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 146, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_size, __pyx_t_1) < 0) __PYX_ERR(1, 146, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_size, __pyx_t_1) < 0) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":147
+  /* "indexed_zstd.pyx":144
  *         self.available_block_offsets = self.zstdreader.available_block_offsets
  *         self.size                    = self.zstdreader.size
  *         self.number_of_frames        = self.zstdreader.number_of_frames             # <<<<<<<<<<<<<<
  *         self.is_multiframe           = self.zstdreader.is_multiframe
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_number_of_frames); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 147, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_number_of_frames); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_number_of_frames, __pyx_t_2) < 0) __PYX_ERR(1, 147, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_number_of_frames, __pyx_t_2) < 0) __PYX_ERR(1, 144, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":148
+  /* "indexed_zstd.pyx":145
  *         self.size                    = self.zstdreader.size
  *         self.number_of_frames        = self.zstdreader.number_of_frames
  *         self.is_multiframe           = self.zstdreader.is_multiframe             # <<<<<<<<<<<<<<
  * 
  *         # Most of the calls like close, seekable, name, mode ... are forwarded to the given raw object
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_zstdreader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_is_multiframe); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_is_multiframe); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_is_multiframe, __pyx_t_1) < 0) __PYX_ERR(1, 148, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_is_multiframe, __pyx_t_1) < 0) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":152
+  /* "indexed_zstd.pyx":149
  *         # Most of the calls like close, seekable, name, mode ... are forwarded to the given raw object
  *         # by BufferedReader or more specifically _BufferedIOMixin
  *         super().__init__(fobj, buffer_size=1024**2)             # <<<<<<<<<<<<<<
@@ -4075,9 +4009,9 @@ static PyObject *__pyx_pf_12indexed_zstd_15IndexedZstdFile___init__(CYTHON_UNUSE
  * __version__ = '1.1.3'
  */
   __pyx_t_1 = __Pyx_CyFunction_GetClassObj(__pyx_self);
-  if (!__pyx_t_1) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(1, 152, __pyx_L1_error) }
+  if (!__pyx_t_1) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(1, 149, __pyx_L1_error) }
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -4085,28 +4019,28 @@ static PyObject *__pyx_pf_12indexed_zstd_15IndexedZstdFile___init__(CYTHON_UNUSE
   __Pyx_GIVEREF(__pyx_v_self);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_self);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_fobj);
   __Pyx_GIVEREF(__pyx_v_fobj);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_fobj);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_buffer_size, __pyx_int_1048576) < 0) __PYX_ERR(1, 152, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 152, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_buffer_size, __pyx_int_1048576) < 0) __PYX_ERR(1, 149, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "indexed_zstd.pyx":137
+  /* "indexed_zstd.pyx":134
  * 
  * class IndexedZstdFile(io.BufferedReader):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -4472,18 +4406,17 @@ static PyMethodDef __pyx_methods_12indexed_zstd__IndexedZstdFile[] = {
   {"seekable", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_11seekable, METH_NOARGS, 0},
   {"readinto", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_13readinto, METH_O, 0},
   {"seek", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_15seek, METH_VARARGS|METH_KEYWORDS, 0},
-  {"seek", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17seek, METH_O, 0},
-  {"tell", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19tell, METH_NOARGS, 0},
-  {"size", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21size, METH_NOARGS, 0},
-  {"tell_compressed", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23tell_compressed, METH_NOARGS, 0},
-  {"block_offsets_complete", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets_complete, METH_NOARGS, 0},
-  {"block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27block_offsets, METH_NOARGS, 0},
-  {"available_block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29available_block_offsets, METH_NOARGS, 0},
-  {"set_block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31set_block_offsets, METH_O, 0},
-  {"number_of_frames", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33number_of_frames, METH_NOARGS, 0},
-  {"is_multiframe", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35is_multiframe, METH_NOARGS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_39__setstate_cython__, METH_O, 0},
+  {"tell", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_17tell, METH_NOARGS, 0},
+  {"size", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_19size, METH_NOARGS, 0},
+  {"tell_compressed", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_21tell_compressed, METH_NOARGS, 0},
+  {"block_offsets_complete", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_23block_offsets_complete, METH_NOARGS, 0},
+  {"block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_25block_offsets, METH_NOARGS, 0},
+  {"available_block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_27available_block_offsets, METH_NOARGS, 0},
+  {"set_block_offsets", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_29set_block_offsets, METH_O, 0},
+  {"number_of_frames", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_31number_of_frames, METH_NOARGS, 0},
+  {"is_multiframe", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_33is_multiframe, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_35__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_12indexed_zstd_16_IndexedZstdFile_37__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -4615,6 +4548,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_IndexedZstdFile_2, __pyx_k_IndexedZstdFile_2, sizeof(__pyx_k_IndexedZstdFile_2), 0, 0, 1, 1},
   {&__pyx_n_s_IndexedZstdFile___init, __pyx_k_IndexedZstdFile___init, sizeof(__pyx_k_IndexedZstdFile___init), 0, 0, 1, 1},
   {&__pyx_n_s_RawIOBase, __pyx_k_RawIOBase, sizeof(__pyx_k_RawIOBase), 0, 0, 1, 1},
+  {&__pyx_n_s_SEEK_SET, __pyx_k_SEEK_SET, sizeof(__pyx_k_SEEK_SET), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_available_block_offsets, __pyx_k_available_block_offsets, sizeof(__pyx_k_available_block_offsets), 0, 0, 1, 1},
   {&__pyx_n_s_block_offsets, __pyx_k_block_offsets, sizeof(__pyx_k_block_offsets), 0, 0, 1, 1},
@@ -4674,7 +4608,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(1, 130, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(1, 127, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4690,66 +4624,66 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__2);
-  __Pyx_GIVEREF(__pyx_tuple__2);
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "indexed_zstd.pyx":114
+  /* "indexed_zstd.pyx":111
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
  *         self.zstdreader = _IndexedZstdFile(filename)
  *         self.name = filename
  */
-  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_filename); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 114, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_init, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(1, 114, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_filename); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 111, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_init, 111, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(1, 111, __pyx_L1_error)
 
-  /* "indexed_zstd.pyx":127
+  /* "indexed_zstd.pyx":124
  *         # IOBase provides sane default implementations for read, readline, readlines, readall, ...
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         if self.closed:
  *             return
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_close, 127, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(1, 127, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_close, 124, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 124, __pyx_L1_error)
 
-  /* "indexed_zstd.pyx":133
+  /* "indexed_zstd.pyx":130
  *         self.zstdreader.close()
  * 
  *     def readable(self):             # <<<<<<<<<<<<<<
  *         return True
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_readable, 133, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_readable, 130, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 130, __pyx_L1_error)
 
-  /* "indexed_zstd.pyx":137
+  /* "indexed_zstd.pyx":134
  * 
  * class IndexedZstdFile(io.BufferedReader):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
  *         fobj = IndexedZstdFileRaw(filename)
  *         self.zstdreader = fobj.zstdreader
  */
-  __pyx_tuple__9 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_filename, __pyx_n_s_fobj); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_init, 137, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(1, 137, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_filename, __pyx_n_s_fobj); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_indexed_zstd_indexed_zstd_pyx, __pyx_n_s_init, 134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(1, 134, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5085,158 +5019,174 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_1) < 0) __PYX_ERR(1, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "indexed_zstd.pyx":113
+  /* "indexed_zstd.pyx":77
+ *         return bytes_count
+ * 
+ *     def seek(self, offset, whence = io.SEEK_SET):             # <<<<<<<<<<<<<<
+ *         return self.zstdreader.seek(offset, whence)
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_io); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SEEK_SET); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_k_ = __pyx_t_2;
+  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "indexed_zstd.pyx":110
  * # Extra class because cdefs are not visible from outside but cdef class can't inherit from io.BufferedIOBase
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):             # <<<<<<<<<<<<<<
  *     def __init__(self, filename):
  *         self.zstdreader = _IndexedZstdFile(filename)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_io); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 113, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_RawIOBase); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_io); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_RawIOBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_IndexedZstdFileRaw, __pyx_n_s_IndexedZstdFileRaw, (PyObject *) NULL, __pyx_n_s_indexed_zstd, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 110, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_2, __pyx_n_s_IndexedZstdFileRaw, __pyx_n_s_IndexedZstdFileRaw, (PyObject *) NULL, __pyx_n_s_indexed_zstd, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "indexed_zstd.pyx":114
+  /* "indexed_zstd.pyx":111
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
  *         self.zstdreader = _IndexedZstdFile(filename)
  *         self.name = filename
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_1__init__, 0, __pyx_n_s_IndexedZstdFileRaw___init, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 114, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_1__init__, 0, __pyx_n_s_IndexedZstdFileRaw___init, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_5) < 0) __PYX_ERR(1, 114, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_5) < 0) __PYX_ERR(1, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "indexed_zstd.pyx":127
+  /* "indexed_zstd.pyx":124
  *         # IOBase provides sane default implementations for read, readline, readlines, readall, ...
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         if self.closed:
  *             return
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_3close, 0, __pyx_n_s_IndexedZstdFileRaw_close, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 127, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_3close, 0, __pyx_n_s_IndexedZstdFileRaw_close, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_t_5);
   PyList_Append(__pyx_t_4, __pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_close, __pyx_t_5) < 0) __PYX_ERR(1, 127, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_close, __pyx_t_5) < 0) __PYX_ERR(1, 124, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "indexed_zstd.pyx":133
+  /* "indexed_zstd.pyx":130
  *         self.zstdreader.close()
  * 
  *     def readable(self):             # <<<<<<<<<<<<<<
  *         return True
  * 
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_5readable, 0, __pyx_n_s_IndexedZstdFileRaw_readable, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_18IndexedZstdFileRaw_5readable, 0, __pyx_n_s_IndexedZstdFileRaw_readable, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_readable, __pyx_t_5) < 0) __PYX_ERR(1, 133, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_readable, __pyx_t_5) < 0) __PYX_ERR(1, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "indexed_zstd.pyx":113
+  /* "indexed_zstd.pyx":110
  * # Extra class because cdefs are not visible from outside but cdef class can't inherit from io.BufferedIOBase
  * 
  * class IndexedZstdFileRaw(io.RawIOBase):             # <<<<<<<<<<<<<<
  *     def __init__(self, filename):
  *         self.zstdreader = _IndexedZstdFile(filename)
  */
-  __pyx_t_5 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_IndexedZstdFileRaw, __pyx_t_1, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_IndexedZstdFileRaw, __pyx_t_2, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_5) < 0) __PYX_ERR(1, 113, __pyx_L1_error)
+  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_5) < 0) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IndexedZstdFileRaw, __pyx_t_5) < 0) __PYX_ERR(1, 113, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IndexedZstdFileRaw, __pyx_t_5) < 0) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":136
+  /* "indexed_zstd.pyx":133
  *         return True
  * 
  * class IndexedZstdFile(io.BufferedReader):             # <<<<<<<<<<<<<<
  *     def __init__(self, filename):
  *         fobj = IndexedZstdFileRaw(filename)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_io); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_BufferedReader); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_io); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_BufferedReader); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_IndexedZstdFile_2, __pyx_n_s_IndexedZstdFile_2, (PyObject *) NULL, __pyx_n_s_indexed_zstd, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_2, __pyx_n_s_IndexedZstdFile_2, __pyx_n_s_IndexedZstdFile_2, (PyObject *) NULL, __pyx_n_s_indexed_zstd, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "indexed_zstd.pyx":137
+  /* "indexed_zstd.pyx":134
  * 
  * class IndexedZstdFile(io.BufferedReader):
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
  *         fobj = IndexedZstdFileRaw(filename)
  *         self.zstdreader = fobj.zstdreader
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_15IndexedZstdFile_1__init__, 0, __pyx_n_s_IndexedZstdFile___init, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 137, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_12indexed_zstd_15IndexedZstdFile_1__init__, 0, __pyx_n_s_IndexedZstdFile___init, NULL, __pyx_n_s_indexed_zstd, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_t_4);
   PyList_Append(__pyx_t_5, __pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(1, 137, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(1, 134, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "indexed_zstd.pyx":136
+  /* "indexed_zstd.pyx":133
  *         return True
  * 
  * class IndexedZstdFile(io.BufferedReader):             # <<<<<<<<<<<<<<
  *     def __init__(self, filename):
  *         fobj = IndexedZstdFileRaw(filename)
  */
-  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_IndexedZstdFile_2, __pyx_t_1, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_IndexedZstdFile_2, __pyx_t_2, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_CyFunction_InitClassCell(__pyx_t_5, __pyx_t_4) < 0) __PYX_ERR(1, 136, __pyx_L1_error)
+  if (__Pyx_CyFunction_InitClassCell(__pyx_t_5, __pyx_t_4) < 0) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IndexedZstdFile_2, __pyx_t_4) < 0) __PYX_ERR(1, 136, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IndexedZstdFile_2, __pyx_t_4) < 0) __PYX_ERR(1, 133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "indexed_zstd.pyx":154
+  /* "indexed_zstd.pyx":151
  *         super().__init__(fobj, buffer_size=1024**2)
  * 
  * __version__ = '1.1.3'             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_kp_u_1_1_3) < 0) __PYX_ERR(1, 154, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_kp_u_1_1_3) < 0) __PYX_ERR(1, 151, __pyx_L1_error)
 
   /* "indexed_zstd.pyx":1
  * from libc.stdlib cimport malloc, free             # <<<<<<<<<<<<<<
  * from libc.stdio cimport SEEK_SET
  * from libcpp.string cimport string
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "map.from_py":174
  * 
