@@ -15,7 +15,9 @@ It's shamelessy based on [indexed_bzip2](https://github.com/mxmlnkn/indexed_bzip
 
 Kudos to the author for its work.
 
-Seeking inside a block is only emulated, so IndexedZstdFile will only speed up seeking when there are more than one block, which sadly requires a bit of care in zstd.
+Seeking inside a block is only emulated, so IndexedZstdFile will only speed up seeking when there are more than one block.
+
+To create multi-block archives you may use [t2sz](https://github.com/martinellimarco/t2sz/).
 
 
 # Usage
