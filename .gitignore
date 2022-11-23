@@ -107,3 +107,5 @@ venv.bak/
 *.bz2
 tools/bzcat
 **/scorep-*
+indexed_zstd/indexed_zstd.cpp
+

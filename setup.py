@@ -2,18 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 from setuptools import setup
 from setuptools.extension import Extension
 from sys import platform
-
-buildCython = '--cython' in sys.argv
+from Cython.Build import cythonize
 
 extensions = [
     Extension(
         name               = 'indexed_zstd',
-        sources            = [ 'indexed_zstd/indexed_zstd.pyx' ] if buildCython
-                            else [ 'indexed_zstd/indexed_zstd.cpp' ],
+        sources            = [ 'indexed_zstd/indexed_zstd.pyx' ],
         include_dirs       = [ '.' ],
         language           = 'c++',
         extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin"
@@ -22,15 +19,12 @@ extensions = [
         libraries = [ 'm' ],
     ),
 ]
+extensions = cythonize(extensions, compiler_directives={'language_level': '3'})
 
 zstd_seek = ('zstd_zeek', {
     'sources': [ 'indexed_zstd/libzstd-seek/zstd-seek.c' ]
 })
 
-if buildCython:
-    from Cython.Build import cythonize
-    extensions = cythonize( extensions, compiler_directives = { 'language_level' : '3' } )
-    del sys.argv[sys.argv.index( '--cython' )]
 
 scriptPath = os.path.abspath( os.path.dirname( __file__ ) )
 with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file:
