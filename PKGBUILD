@@ -21,5 +21,5 @@ prepare() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    python setup.py install --cython --root="$pkgdir/" --optimize=1
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
