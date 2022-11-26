@@ -53,7 +53,8 @@ jobs:
         # 3.8 was released 2019-10-14 and end-of-life will be 2024-10-14
         # 3.9 was released 2020-10-05 and end-of-life will be 2025-10-25
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
-        python-version: ['3.6', '3.10']
+        # 3.11 was released 2022-10-24 and end-of-life will be 2027-10-24
+        python-version: ['3.7', '3.11']
         os: [macos-latest, ubuntu-latest]
         #os: [macos-latest, ubuntu-latest, windows-latest]
 
@@ -107,7 +108,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
     - name: Install Python Dependencies
       run: |
