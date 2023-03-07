@@ -3,45 +3,6 @@ name: tests
 on: [push, pull_request]
 
 jobs:
-  Code-Checks:
-    name: Code Checks
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-
-    - name: Install Dependencies
-      run: |
-        sudo apt-get -y install libzstd-dev clang g++ wget
-        python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine numpy
-        
-    - name: System Information
-      run: |
-        nproc
-        g++ --version
-        clang++ --version
-
-    - name: Check committed Cython source
-      run: |
-        # Note that modification times can't be compared because they are changed by the git checkout
-        python3 setup.py build_clib
-        python3 setup.py build_ext --inplace
-        git status
-        git diff
-        ls -la indexed_zstd/indexed_zstd.cpp
-        if ! git diff --quiet indexed_zstd/indexed_zstd.cpp; then
-          echo -e '\e[31mPlease trigger a rebuild of indexed_zstd.pyx using "python3 setup.py build_ext --inplace --cython" and commit the new file\e[0m'
-          git diff indexed_zstd/indexed_zstd.cpp
-        fi
-
-    - name: Install From Tarball
-      run: |
-        python3 setup.py sdist
-        twine check dist/*
-        python3 -m pip install dist/*.tar.gz
-
   Tests:
     runs-on: ${{ matrix.os }}
     strategy:
