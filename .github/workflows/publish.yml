@@ -69,7 +69,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade setuptools twine
+        python3 -m pip install --upgrade-strategy eager --upgrade cython setuptools twine
 
     - name: Create Tarball
       run: python3 setup.py sdist
