@@ -3,45 +3,6 @@ name: tests
 on: [push, pull_request]
 
 jobs:
-  Code-Checks:
-    name: Code Checks
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-
-    - name: Install Dependencies
-      run: |
-        sudo apt-get -y install libzstd-dev clang g++ wget
-        python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine numpy
-        
-    - name: System Information
-      run: |
-        nproc
-        g++ --version
-        clang++ --version
-
-    - name: Check committed Cython source
-      run: |
-        # Note that modification times can't be compared because they are changed by the git checkout
-        python3 setup.py build_clib
-        python3 setup.py build_ext --inplace
-        git status
-        git diff
-        ls -la indexed_zstd/indexed_zstd.cpp
-        if ! git diff --quiet indexed_zstd/indexed_zstd.cpp; then
-          echo -e '\e[31mPlease trigger a rebuild of indexed_zstd.pyx using "python3 setup.py build_ext --inplace --cython" and commit the new file\e[0m'
-          git diff indexed_zstd/indexed_zstd.cpp
-        fi
-
-    - name: Install From Tarball
-      run: |
-        python3 setup.py sdist
-        twine check dist/*
-        python3 -m pip install dist/*.tar.gz
-
   Tests:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -55,8 +16,7 @@ jobs:
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
         # 3.11 was released 2022-10-24 and end-of-life will be 2027-10-24
         python-version: ['3.7', '3.11']
-        os: [macos-latest, ubuntu-latest]
-        #os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -68,18 +28,27 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install Dependencies
+    - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get -y install libzstd-dev g++
 
+    - name: Install Dependencies (windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        python libzstd/_get_zstd.py
+        copy libzstd/lib/libzstd.dll C:\Windows\System32\
+        regsvr32 C:\Windows\System32\libzstd.dll
+
     - name: Install Python Modules
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cibuildwheel cython twine numpy
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
 
     - name: Test Installation From Tarball
       shell: bash
+      env:
+        LIBZSTD_DIR: ${{ github.workspace }}\libzstd  # windows
       run: |
         python3 setup.py sdist
         twine check dist/*
@@ -96,8 +65,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
-        #os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
         manylinux-image: [manylinux2014]
 
     steps:
@@ -126,7 +94,8 @@ jobs:
         CIBW_ARCHS: auto64
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apk add zstd-dev
         CIBW_BEFORE_ALL_MACOS: brew install zstd
-        CIBW_BEFORE_ALL_WINDOWS: choco install zstandard
+        CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
+        CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
       run: python -m cibuildwheel --output-dir dist
 
     - name: Check Wheels
