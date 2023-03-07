@@ -2,27 +2,54 @@
 # -*- coding: utf-8 -*-
 
 import os
+import platform
 from setuptools import setup
 from setuptools.extension import Extension
-from sys import platform
 from Cython.Build import cythonize
+
+
+if platform.system() == "Darwin":
+    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9']
+    extra_link_args    = [ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=10.9' ]
+    include_dirs       = [ '.' ]
+    libraries          = [ 'm' ]
+    library_dirs       = []
+
+elif platform.system() == "Windows":
+    _pkg_dir = os.path.dirname(__file__)
+    LIBZSTD_DIR = os.getenv('LIBZSTD_DIR', os.path.join(_pkg_dir, 'libzstd'))
+
+    extra_compile_args = [ '/std:c++17', '/O2', '/DNDEBUG' ]  # FIXME
+    extra_link_args    = []
+    include_dirs       = [ os.path.join(LIBZSTD_DIR, 'include') ]
+    libraries          = [ 'libzstd' ]
+    library_dirs       = [ os.path.join(LIBZSTD_DIR, 'lib') ]
+
+else:
+    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG' ]
+    extra_link_args    = [ '-lzstd' ]
+    include_dirs       = [ '.' ]
+    libraries          = [ 'm' ]
+    library_dirs       = []
+
 
 extensions = [
     Extension(
         name               = 'indexed_zstd',
         sources            = [ 'indexed_zstd/indexed_zstd.pyx' ],
-        include_dirs       = [ '.' ],
         language           = 'c++',
-        extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin"
-                             else [ '-std=c++17', '-O3', '-DNDEBUG' ],
-        extra_link_args=[ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=10.9' ] if platform == "darwin" else [ '-lzstd' ],
-        libraries = [ 'm' ],
+        include_dirs       = include_dirs,
+        extra_compile_args = extra_compile_args,
+        extra_link_args    = extra_link_args,
+        libraries          = libraries,
+        library_dirs       = library_dirs,
     ),
 ]
 extensions = cythonize(extensions, compiler_directives={'language_level': '3'})
 
 zstd_seek = ('zstd_zeek', {
-    'sources': [ 'indexed_zstd/libzstd-seek/zstd-seek.c' ]
+    'sources': [ 'indexed_zstd/libzstd-seek/zstd-seek.c' ],
+    'include_dirs': include_dirs
 })
 
 
@@ -45,12 +72,14 @@ setup(
                          'Operating System :: MacOS',
                          'Operating System :: POSIX',
                          'Operating System :: Unix',
+                         'Operating System :: Windows',
                          'Programming Language :: Python :: 3',
                          'Programming Language :: Python :: 3.6',
                          'Programming Language :: Python :: 3.7',
                          'Programming Language :: Python :: 3.8',
                          'Programming Language :: Python :: 3.9',
                          'Programming Language :: Python :: 3.10',
+                         'Programming Language :: Python :: 3.11',
                          'Programming Language :: C++',
                          'Topic :: Software Development :: Libraries',
                          'Topic :: Software Development :: Libraries :: Python Modules',
