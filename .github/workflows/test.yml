@@ -92,6 +92,7 @@ jobs:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_1
         CIBW_ARCHS: auto64
+        CIBW_ARCHS_MACOS: "x86_64 universal2 arm64"
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apk add zstd-dev
         CIBW_BEFORE_ALL_MACOS: brew install zstd
         CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
