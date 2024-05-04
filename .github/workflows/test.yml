@@ -32,7 +32,7 @@ jobs:
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-13' || matrix.os == 'macos-14'
       run: |
-        sudo brew install zstd
+        brew install zstd
 
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
