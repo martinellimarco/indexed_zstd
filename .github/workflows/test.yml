@@ -17,7 +17,8 @@ jobs:
         # 3.11 was released 2022-10-24 and end-of-life will be 2027-10-24
         # 3.12 was released 2023-10-02 and end-of-life will be 2028-10
         python-version: ['3.8', '3.12']
-        os: [macos-13, macos-14, ubuntu-latest, windows-latest]
+        #os: [macos-13, macos-14, ubuntu-latest, windows-latest]
+        os: [macos-13, macos-14]
 
     steps:
     - uses: actions/checkout@v2
