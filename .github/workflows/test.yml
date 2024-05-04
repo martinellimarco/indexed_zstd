@@ -29,6 +29,11 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Install Dependencies (macos)
+      if: matrix.os == 'macos-13' || matrix.os == 'macos-14'
+      run: |
+        sudo brew install zstd
+
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: |
@@ -82,7 +87,7 @@ jobs:
     - name: Install Python Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
 
     - name: Build Tarball
       if: matrix.os == 'ubuntu-latest'
