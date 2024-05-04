@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-13, ubuntu-latest, windows-latest]
         manylinux-image: [manylinux2014]
 
     steps:
@@ -23,12 +23,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'
+        python-version: '3.12'
 
     - name: Install Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
 
     - name: Build Tarball
       if: matrix.os == 'ubuntu-latest'
@@ -39,8 +39,9 @@ jobs:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_1
         CIBW_ARCHS: auto64
+        CIBW_ARCHS_MACOS: "x86_64 arm64"
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apk add zstd-dev
-        CIBW_BEFORE_ALL_MACOS: brew install zstd
+        CIBW_BEFORE_ALL_MACOS: brew update && brew reinstall zstd
         CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
         CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
       run: python -m cibuildwheel --output-dir dist
@@ -64,7 +65,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'
+        python-version: '3.12'
 
     - name: Install Dependencies
       run: |
