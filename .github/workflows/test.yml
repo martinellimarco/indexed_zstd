@@ -32,7 +32,7 @@ jobs:
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-13' || matrix.os == 'macos-14'
       run: |
-        brew install zstd
+        brew update && brew reinstall zstd
 
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
@@ -100,7 +100,7 @@ jobs:
         CIBW_ARCHS: auto64
         CIBW_ARCHS_MACOS: "x86_64 arm64"
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apk add zstd-dev
-        CIBW_BEFORE_ALL_MACOS: brew install zstd
+        CIBW_BEFORE_ALL_MACOS: brew update && brew reinstall zstd
         CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
         CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
       run: python -m cibuildwheel --output-dir dist
