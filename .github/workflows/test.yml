@@ -15,8 +15,10 @@ jobs:
         # 3.9 was released 2020-10-05 and end-of-life will be 2025-10-25
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
         # 3.11 was released 2022-10-24 and end-of-life will be 2027-10-24
-        python-version: ['3.7', '3.11']
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        # 3.12 was released 2023-10-02 and end-of-life will be 2028-10
+        python-version: ['3.8', '3.12']
+        #os: [macos-13, macos-14, ubuntu-latest, windows-latest]
+        os: [macos-13, ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -27,6 +29,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
+    - name: Install Dependencies (macos)
+      if: matrix.os == 'macos-13' || matrix.os == 'macos-14'
+      run: |
+        brew update && brew reinstall zstd
 
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
@@ -43,7 +50,7 @@ jobs:
     - name: Install Python Modules
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
 
     - name: Test Installation From Tarball
       shell: bash
@@ -65,7 +72,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        #os: [macos-13, macos-14, ubuntu-latest, windows-latest]
+        os: [macos-13, ubuntu-latest, windows-latest]
         manylinux-image: [manylinux2014]
 
     steps:
@@ -76,12 +84,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'
+        python-version: '3.12'
 
     - name: Install Python Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
 
     - name: Build Tarball
       if: matrix.os == 'ubuntu-latest'
@@ -92,8 +100,9 @@ jobs:
         CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux-image }}
         CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_1
         CIBW_ARCHS: auto64
+        CIBW_ARCHS_MACOS: "x86_64 arm64"
         CIBW_BEFORE_ALL_LINUX: yum install -y libzstd-devel || apk add zstd-dev
-        CIBW_BEFORE_ALL_MACOS: brew install zstd
+        CIBW_BEFORE_ALL_MACOS: brew update && brew reinstall zstd
         CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
         CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
       run: python -m cibuildwheel --output-dir dist

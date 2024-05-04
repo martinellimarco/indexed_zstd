@@ -36,13 +36,20 @@ LIBRARY_DIR.mkdir(exist_ok=True)
 
 
 with zipfile.ZipFile(io.BytesIO(zip_data)) as zf:
-    INCLUDE_DIR.joinpath("zstd.h").write_bytes(zf.read("include/zstd.h"))
-    LIBRARY_DIR.joinpath("libzstd.dll").write_bytes(zf.read("dll/libzstd.dll"))
+    files = zf.namelist()
+    zstd_h = next((f for f in files if "include/zstd.h" in f), None)
+    libzstd_dll = next((f for f in files if "dll/libzstd.dll" in f), None)
+    libzstd_lib = next((f for f in files if "dll/libzstd.lib" in f), None)
+    libzstd_dll_a = next((f for f in files if "dll/libzstd.dll.a" in f), None)
+
+    INCLUDE_DIR.joinpath("zstd.h").write_bytes(zf.read(zstd_h))
+    LIBRARY_DIR.joinpath("libzstd.dll").write_bytes(zf.read(libzstd_dll))
     try:
-        _libzstd_lib = zf.read("dll/libzstd.lib")
+        _libzstd_lib = zf.read(libzstd_lib)
     except KeyError:
-        _libzstd_lib = zf.read("dll/libzstd.dll.a")
+        _libzstd_lib = zf.read(libzstd_dll_a)
     # this renames libzstd.dll.a to libzstd.lib for setuptools to work
     LIBRARY_DIR.joinpath("libzstd.lib").write_bytes(_libzstd_lib)
+
 
 print("success")
