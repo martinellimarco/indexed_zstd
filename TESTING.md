@@ -12,7 +12,7 @@ The test suite exercises the `indexed_zstd` Python binding across five dimension
 | **Stress**         | 10K random byte-range reads   | cross-frame reads, backward jumps, range verification |
 | **Realistic data** | SHA256 + t2sz real blobs      | high/low compressibility, many frame sizes & levels   |
 
-175 tests in total: 44 round-trip, 48 API, 11 error-path, 65 reference comparison,
+176 tests in total: 44 round-trip, 49 API, 11 error-path, 65 reference comparison,
 and 7 heavy (realistic data) tests. All tests run unconditionally — no skips.
 
 ---
@@ -170,6 +170,7 @@ full read, 256-byte chunked read, 1000 random seeks, and byte-by-byte (small fil
 | `test_compressed_tell`      | `tell_compressed()` coherence                          |
 | `test_compressed_tell_mono` | `tell_compressed()` never decreases                    |
 | `test_compressed_tell_seek` | `tell_compressed()` at frame boundaries                |
+| `test_compressed_tell_absolute` | `tell_compressed()` ≤ compressed file size (1×1 MiB frame) |
 | `test_last_known_size`      | `available_block_offsets()` → `block_offsets()` growth |
 
 #### Python-specific API

@@ -746,6 +746,38 @@ class TestInfoFunctions:
                     byte = f.read(1)
                     assert len(byte) == 1
 
+    def test_compressed_tell_absolute(self, tmp_path):
+        """Verify tell_compressed() never exceeds compressed file size.
+
+        Uses a single large frame (1 MiB) to force many iterations of the
+        inner ZSTD_decompressStream loop per read() call.  This catches the
+        cumulative overcount bug where input.pos (cumulative within a frame)
+        was accumulated instead of the delta.
+        """
+        zst, raw = generate_test_data(tmp_path, 42, 1, 1048576)
+        compressed_size = os.path.getsize(zst)
+
+        with IndexedZstdFile(zst) as f:
+            total_read = 0
+            reads = 0
+            while True:
+                data = f.read(4096)
+                if not data:
+                    break
+                total_read += len(data)
+                reads += 1
+                ct = f.tell_compressed()
+                assert 0 <= ct <= compressed_size, (
+                    f"read #{reads} (total={total_read}): "
+                    f"tell_compressed()={ct} exceeds file size={compressed_size}"
+                )
+
+            # At EOF, compressed position should equal compressed file size
+            ct_final = f.tell_compressed()
+            assert ct_final == compressed_size, (
+                f"at EOF: tell_compressed()={ct_final} != file size={compressed_size}"
+            )
+
     def test_last_known_size(self, standard_4frame):
         """C: last_known_size — available offsets progression."""
         zst, raw = standard_4frame
