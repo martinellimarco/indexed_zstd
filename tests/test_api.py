@@ -856,3 +856,71 @@ class TestPythonAPI:
         zst, raw = standard_4frame
         with IndexedZstdFile(zst) as f:
             assert f.tell() == 0
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Inline (no-variable) lifetime tests — regression for GitHub issue #21
+#
+# When IndexedZstdFile is not assigned to a variable, CPython's LOAD_ATTR
+# drops the last reference before the method call, triggering premature GC.
+# BufferedReader.__del__ calls close(), freeing the C context.  The bound
+# method then operates on a closed context and returns wrong values.
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class TestInlineLifetime:
+    """Verify methods work correctly without assigning the object to a variable.
+
+    Regression tests for GitHub issue #21: when IndexedZstdFile is not assigned
+    to a variable, CPython's LOAD_ATTR drops the last stack reference before
+    the bound method is called, triggering BufferedReader.__del__ → close() →
+    ZSTDSeek_free().  The method then operates on a closed/freed context.
+
+    IMPORTANT: the method call is separated from the assert statement to prevent
+    pytest's assert-rewriting from creating temporary variables that would keep
+    the object alive and mask the bug.
+    """
+
+    def test_inline_size(self, standard_4frame_seekable):
+        """size() must return correct value without variable assignment."""
+        zst, raw = standard_4frame_seekable
+        raw_size = os.path.getsize(raw)
+        # Do NOT merge into assert — pytest's rewriting would mask the GC bug
+        result = (IndexedZstdFile(zst)).size()
+        assert result == raw_size
+
+    def test_inline_number_of_frames(self, standard_4frame_seekable):
+        """number_of_frames() must return correct value inline."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).number_of_frames()
+        assert result > 0
+
+    def test_inline_is_multiframe(self, standard_4frame_seekable):
+        """is_multiframe() must return True for multi-frame file inline."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).is_multiframe()
+        assert result is True
+
+    def test_inline_block_offsets(self, standard_4frame_seekable):
+        """block_offsets() must return non-empty dict inline."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).block_offsets()
+        assert len(result) > 0
+
+    def test_inline_tell_compressed(self, standard_4frame_seekable):
+        """tell_compressed() must return >= 0 inline."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).tell_compressed()
+        assert result >= 0
+
+    def test_inline_available_block_offsets(self, standard_4frame_seekable):
+        """available_block_offsets() must not crash inline."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).available_block_offsets()
+        assert isinstance(result, dict)
+
+    def test_inline_read(self, standard_4frame_seekable):
+        """read() must return data inline (not empty due to premature close)."""
+        zst, raw = standard_4frame_seekable
+        result = (IndexedZstdFile(zst)).read(100)
+        assert len(result) == 100

@@ -135,17 +135,39 @@ class IndexedZstdFile(io.BufferedReader):
         fobj = IndexedZstdFileRaw(filename)
         self.zstdreader = fobj.zstdreader
 
-        self.tell_compressed         = self.zstdreader.tell_compressed
-        self.block_offsets           = self.zstdreader.block_offsets
-        self.set_block_offsets       = self.zstdreader.set_block_offsets
-        self.block_offsets_complete  = self.zstdreader.block_offsets_complete
-        self.available_block_offsets = self.zstdreader.available_block_offsets
-        self.size                    = self.zstdreader.size
-        self.number_of_frames        = self.zstdreader.number_of_frames
-        self.is_multiframe           = self.zstdreader.is_multiframe
-
         # Most of the calls like close, seekable, name, mode ... are forwarded to the given raw object
         # by BufferedReader or more specifically _BufferedIOMixin
         super().__init__(fobj, buffer_size=1024**2)
+
+    # These methods delegate through self, which keeps the IndexedZstdFile
+    # (and therefore the BufferedReader → RawIOBase → C context chain) alive
+    # for the duration of the call.  The previous implementation stored bound
+    # methods of _IndexedZstdFile as instance attributes, which bypassed self
+    # and allowed CPython to garbage-collect the IndexedZstdFile (triggering
+    # BufferedReader.__del__ → close()) before the method body executed.
+
+    def tell_compressed(self):
+        return self.zstdreader.tell_compressed()
+
+    def block_offsets(self):
+        return self.zstdreader.block_offsets()
+
+    def set_block_offsets(self, offsets):
+        return self.zstdreader.set_block_offsets(offsets)
+
+    def block_offsets_complete(self):
+        return self.zstdreader.block_offsets_complete()
+
+    def available_block_offsets(self):
+        return self.zstdreader.available_block_offsets()
+
+    def size(self):
+        return self.zstdreader.size()
+
+    def number_of_frames(self):
+        return self.zstdreader.number_of_frames()
+
+    def is_multiframe(self):
+        return self.zstdreader.is_multiframe()
 
 __version__ = '1.1.3'

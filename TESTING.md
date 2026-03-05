@@ -12,7 +12,7 @@ The test suite exercises the `indexed_zstd` Python binding across five dimension
 | **Stress**         | 10K random byte-range reads   | cross-frame reads, backward jumps, range verification |
 | **Realistic data** | SHA256 + t2sz real blobs      | high/low compressibility, many frame sizes & levels   |
 
-176 tests in total: 44 round-trip, 49 API, 11 error-path, 65 reference comparison,
+183 tests in total: 44 round-trip, 56 API, 11 error-path, 65 reference comparison,
 and 7 heavy (realistic data) tests. All tests run unconditionally — no skips.
 
 ---
@@ -186,6 +186,21 @@ full read, 256-byte chunked read, 1000 random seeks, and byte-by-byte (small fil
 | `test_closed_property`   | `closed` property after close()                 |
 | `test_tell_initial`      | `tell()` returns 0 at start                     |
 
+#### Inline lifetime (GH #21 regression)
+
+Verify that methods work correctly when called on a temporary (not assigned to a
+variable), preventing premature garbage collection of the underlying C++ context.
+
+| Test                                | What is covered                                   |
+|-------------------------------------|---------------------------------------------------|
+| `test_inline_size`                  | `(IndexedZstdFile(p)).size()` returns correct size |
+| `test_inline_number_of_frames`      | `(IndexedZstdFile(p)).number_of_frames()` > 0      |
+| `test_inline_is_multiframe`         | `(IndexedZstdFile(p)).is_multiframe()` is True     |
+| `test_inline_block_offsets`         | `(IndexedZstdFile(p)).block_offsets()` non-empty   |
+| `test_inline_tell_compressed`       | `(IndexedZstdFile(p)).tell_compressed()` ≥ 0       |
+| `test_inline_available_block_offsets`| `(IndexedZstdFile(p)).available_block_offsets()`   |
+| `test_inline_read`                  | `(IndexedZstdFile(p)).read(100)` returns 100 bytes |
+
 ### Error paths (`test_error_paths.py`)
 
 | Test                         | What is covered                                   |
@@ -273,10 +288,10 @@ These tests require C-level API access not exposed in the Python binding:
 ## Running subsets
 
 ```bash
-# All tests (155 total)
+# All tests (183 total)
 pytest tests/ -v
 
-# Exclude heavy tests (~148 tests, < 10 seconds)
+# Exclude heavy tests (~176 tests, < 10 seconds)
 pytest tests/ -m "not heavy"
 
 # Exclude reference tests (no zstd CLI needed)
