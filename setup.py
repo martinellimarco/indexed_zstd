@@ -9,8 +9,8 @@ from Cython.Build import cythonize
 
 
 if platform.system() == "Darwin":
-    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9']
-    extra_link_args    = [ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=10.9' ]
+    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=11.0']
+    extra_link_args    = [ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=11.0' ]
     include_dirs       = [ '.' ]
     libraries          = [ 'm' ]
     library_dirs       = []
@@ -74,13 +74,11 @@ setup(
                          'Operating System :: Unix',
                          'Operating System :: Microsoft :: Windows',
                          'Programming Language :: Python :: 3',
-                         'Programming Language :: Python :: 3.6',
-                         'Programming Language :: Python :: 3.7',
-                         'Programming Language :: Python :: 3.8',
-                         'Programming Language :: Python :: 3.9',
                          'Programming Language :: Python :: 3.10',
                          'Programming Language :: Python :: 3.11',
                          'Programming Language :: Python :: 3.12',
+                         'Programming Language :: Python :: 3.13',
+                         'Programming Language :: Python :: 3.14',
                          'Programming Language :: C++',
                          'Programming Language :: C',
                          'Topic :: Software Development :: Libraries',
