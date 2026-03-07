@@ -34,7 +34,8 @@ jobs:
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: |
-        sudo apt-get -y install libzstd-dev g++
+        sudo apt-get update
+        sudo apt-get -y install libzstd-dev g++ cmake
 
     - name: Install Dependencies (windows)
       if: matrix.os == 'windows-latest'
@@ -60,7 +61,7 @@ jobs:
     - name: Build gen_seekable from submodule
       if: matrix.os != 'windows-latest'
       run: |
-        cmake -S indexed_zstd/libzstd-seek -B indexed_zstd/libzstd-seek/build
+        cmake -S indexed_zstd/libzstd-seek -B indexed_zstd/libzstd-seek/build -DBUILD_TESTS=ON
         cmake --build indexed_zstd/libzstd-seek/build --target gen_seekable
         echo "${{ github.workspace }}/indexed_zstd/libzstd-seek/build/tests" >> $GITHUB_PATH
 
