@@ -8,16 +8,12 @@ jobs:
     strategy:
       matrix:
         # Oldest and newest versions should be enough. Python versions are supported 5 years from release date.
-        # 3.5 was released 2015-09-13 and end-of-life was 2020-09-13
-        # 3.6 was released 2016-12-23 and end-of-life will be 2021-12-23
-        # 3.7 was released 2018-06-27 and end-of-life will be 2023-06-27
-        # 3.8 was released 2019-10-14 and end-of-life will be 2024-10-14
-        # 3.9 was released 2020-10-05 and end-of-life will be 2025-10-25
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
         # 3.11 was released 2022-10-24 and end-of-life will be 2027-10-24
         # 3.12 was released 2023-10-02 and end-of-life will be 2028-10
-        python-version: ['3.8', '3.12']
-        #os: [macos-13, macos-14, ubuntu-latest, windows-latest]
+        # 3.13 was released 2024-10-07 and end-of-life will be 2029-10
+        # 3.14 was released 2025-10-07 and end-of-life will be 2030-10
+        python-version: ['3.10', '3.14']
         os: [macos-13, ubuntu-latest, windows-latest]
 
     steps:
@@ -50,7 +46,7 @@ jobs:
     - name: Install Python Modules
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
+        python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools pytest
 
     - name: Test Installation From Tarball
       shell: bash
@@ -61,11 +57,22 @@ jobs:
         twine check dist/*
         python3 -m pip install dist/*.tar.gz
 
-    - name: Test ZSTD Decoder Python Package
-      # indexed_zstd should be installed for this step!
+    - name: Build gen_seekable from submodule
+      if: matrix.os != 'windows-latest'
       run: |
-        cd test
-        python3 test.py
+        cmake -S indexed_zstd/libzstd-seek -B indexed_zstd/libzstd-seek/build
+        cmake --build indexed_zstd/libzstd-seek/build --target gen_seekable
+        echo "${{ github.workspace }}/indexed_zstd/libzstd-seek/build/tests" >> $GITHUB_PATH
+
+    - name: Test Python Package (Linux/macOS)
+      if: matrix.os != 'windows-latest'
+      run: |
+        python3 -m pytest tests/ -v -m "not heavy and not reference"
+
+    - name: Test Python Package (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        python3 -c "import indexed_zstd; print('indexed_zstd imported successfully')"
 
   Build-Wheels:
     runs-on: ${{ matrix.os }}
