@@ -125,7 +125,8 @@ class IndexedZstdFileRaw(io.RawIOBase):
         if self.closed:
             return
         super().close()
-        self.zstdreader.close()
+        if hasattr(self, 'zstdreader'):
+            self.zstdreader.close()
 
     def readable(self):
         return True
