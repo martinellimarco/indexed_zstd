@@ -1,6 +1,7 @@
 """download the latest zstd release for win64"""
 import io
 import json
+import os
 import pathlib
 import platform
 import urllib.request
@@ -13,7 +14,13 @@ if platform.system() != "Windows":
 
 ZSTD_RELEASE_LATEST = "https://api.github.com/repos/facebook/zstd/releases/latest"
 
-with urllib.request.urlopen(ZSTD_RELEASE_LATEST) as response:
+# Use GITHUB_TOKEN if available (CI) to avoid API rate limits.
+request = urllib.request.Request(ZSTD_RELEASE_LATEST)
+token = os.environ.get("GITHUB_TOKEN")
+if token:
+    request.add_header("Authorization", f"token {token}")
+
+with urllib.request.urlopen(request) as response:
     data = json.load(response)
 
 for asset in data["assets"]:
@@ -37,12 +44,16 @@ LIBRARY_DIR.mkdir(exist_ok=True)
 
 with zipfile.ZipFile(io.BytesIO(zip_data)) as zf:
     files = zf.namelist()
-    zstd_h = next((f for f in files if "include/zstd.h" in f), None)
     libzstd_dll = next((f for f in files if "dll/libzstd.dll" in f), None)
     libzstd_lib = next((f for f in files if "dll/libzstd.lib" in f), None)
     libzstd_dll_a = next((f for f in files if "dll/libzstd.dll.a" in f), None)
 
-    INCLUDE_DIR.joinpath("zstd.h").write_bytes(zf.read(zstd_h))
+    # extract all headers (zstd.h, zstd_errors.h, zdict.h)
+    for f in files:
+        if "/include/" in f and f.endswith(".h"):
+            name = pathlib.PurePosixPath(f).name
+            INCLUDE_DIR.joinpath(name).write_bytes(zf.read(f))
+
     LIBRARY_DIR.joinpath("libzstd.dll").write_bytes(zf.read(libzstd_dll))
     try:
         _libzstd_lib = zf.read(libzstd_lib)

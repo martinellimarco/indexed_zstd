@@ -9,11 +9,21 @@ from Cython.Build import cythonize
 
 
 if platform.system() == "Darwin":
-    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=10.9']
-    extra_link_args    = [ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=10.9' ]
+    _macos_target = os.environ.get('MACOSX_DEPLOYMENT_TARGET', '11.0')
+    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', f'-mmacosx-version-min={_macos_target}']
+    extra_link_args    = [ '-lzstd', '-stdlib=libc++', f'-mmacosx-version-min={_macos_target}' ]
     include_dirs       = [ '.' ]
     libraries          = [ 'm' ]
     library_dirs       = []
+
+    # Add Homebrew paths (arm64: /opt/homebrew, x86_64: /usr/local)
+    for _prefix in ['/opt/homebrew', '/usr/local']:
+        _inc = os.path.join(_prefix, 'include')
+        _lib = os.path.join(_prefix, 'lib')
+        if os.path.isdir(_inc):
+            include_dirs.append(_inc)
+        if os.path.isdir(_lib):
+            library_dirs.append(_lib)
 
 elif platform.system() == "Windows":
     _pkg_dir = os.path.dirname(__file__)
@@ -60,7 +70,7 @@ with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file
 
 setup(
     name             = 'indexed_zstd',
-    version          = '1.6.1',
+    version          = '1.7.0',
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',
@@ -74,13 +84,11 @@ setup(
                          'Operating System :: Unix',
                          'Operating System :: Microsoft :: Windows',
                          'Programming Language :: Python :: 3',
-                         'Programming Language :: Python :: 3.6',
-                         'Programming Language :: Python :: 3.7',
-                         'Programming Language :: Python :: 3.8',
-                         'Programming Language :: Python :: 3.9',
                          'Programming Language :: Python :: 3.10',
                          'Programming Language :: Python :: 3.11',
                          'Programming Language :: Python :: 3.12',
+                         'Programming Language :: Python :: 3.13',
+                         'Programming Language :: Python :: 3.14',
                          'Programming Language :: C++',
                          'Programming Language :: C',
                          'Topic :: Software Development :: Libraries',

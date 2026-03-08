@@ -109,3 +109,4 @@ tools/bzcat
 **/scorep-*
 indexed_zstd/indexed_zstd.cpp
 
+.idea
