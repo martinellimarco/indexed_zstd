@@ -36,7 +36,8 @@ Pre-built wheels are available for Linux, macOS, and Windows:
 pip install indexed-zstd
 ```
 
-Building from source requires `zstd` development headers and a C++17 compiler:
+If no wheel is available for your platform, pip will build from source automatically.
+In that case you need `zstd` development headers and a C++17 compiler:
 
 ```bash
 # Debian/Ubuntu
@@ -44,9 +45,6 @@ sudo apt install libzstd-dev
 
 # macOS
 brew install zstd
-
-# Then install
-pip install indexed-zstd
 ```
 
 ### conda
@@ -156,9 +154,35 @@ python -m pytest tests/ -v
 
 ## Building from source
 
+Requires a C++17 compiler, Cython, and platform-specific zstd libraries.
+
 ```bash
+# Clone with submodules (includes libzstd-seek)
 git clone --recurse-submodules https://github.com/martinellimarco/indexed_zstd.git
 cd indexed_zstd
+pip install cython setuptools
+```
+
+### Linux
+
+```bash
+sudo apt install libzstd-dev    # Debian/Ubuntu
+pip install .
+```
+
+### macOS
+
+```bash
+brew install zstd
+pip install .
+```
+
+### Windows
+
+Requires [Visual Studio Build Tools](https://visualstudio.microsoft.com/it/downloads/) with the C++ workload.
+
+```powershell
+python libzstd/_get_zstd.py    # downloads zstd headers and DLL
 pip install .
 ```
 
