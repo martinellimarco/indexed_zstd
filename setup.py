@@ -15,6 +15,15 @@ if platform.system() == "Darwin":
     libraries          = [ 'm' ]
     library_dirs       = []
 
+    # Add Homebrew paths (arm64: /opt/homebrew, x86_64: /usr/local)
+    for _prefix in ['/opt/homebrew', '/usr/local']:
+        _inc = os.path.join(_prefix, 'include')
+        _lib = os.path.join(_prefix, 'lib')
+        if os.path.isdir(_inc):
+            include_dirs.append(_inc)
+        if os.path.isdir(_lib):
+            library_dirs.append(_lib)
+
 elif platform.system() == "Windows":
     _pkg_dir = os.path.dirname(__file__)
     LIBZSTD_DIR = os.getenv('LIBZSTD_DIR', os.path.join(_pkg_dir, 'libzstd'))
