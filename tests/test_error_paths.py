@@ -108,12 +108,12 @@ class TestErrorSeek:
             # Seeking past EOF
             try:
                 f.seek(file_size + 100, 0)  # SEEK_SET
-                # If it doesn't raise, tell should be at or past EOF
+                # Wrapper may clamp position or set it past EOF
                 pos = f.tell()
                 assert pos >= 0
-                # Read should return empty or raise
-                data = f.read(1)
-                # Should return empty at or past EOF
+                if pos >= file_size:
+                    # Past EOF: read must return empty
+                    assert f.read(1) == b""
             except (ValueError, OSError):
                 pass  # Also acceptable
 

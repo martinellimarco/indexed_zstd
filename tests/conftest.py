@@ -70,13 +70,6 @@ def xorshift64(state):
     return state, state
 
 
-# ── pytest markers ───────────────────────────────────────────────────────────
-
-def pytest_configure(config):
-    config.addinivalue_line("markers", "heavy: realistic data tests requiring t2sz")
-    config.addinivalue_line("markers", "reference: reference comparison tests requiring zstd CLI")
-
-
 # ── Standard data fixtures ───────────────────────────────────────────────────
 
 @pytest.fixture

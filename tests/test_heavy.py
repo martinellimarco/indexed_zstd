@@ -103,7 +103,7 @@ def compress_with_t2sz(raw_path, zst_path, frame_size, level):
     )
 
 
-def verify_file(zst_path, raw_path, raw_data, label):
+def verify_file(zst_path, raw_data, label):
     """Full verification: SHA256, byte-exact, seek stress, chunked reads."""
     raw_hash = sha256_bytes(raw_data)
     file_size = len(raw_data)
@@ -181,7 +181,7 @@ class TestHeavy:
         generate_text(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 300000, 3)
-        verify_file(zst_path, raw_path, raw_data, "heavy_text")
+        verify_file(zst_path, raw_data, "heavy_text")
 
     def test_heavy_binary(self, tmp_path):
         """10 MB random binary, 250000 B frames, level 3."""
@@ -192,7 +192,7 @@ class TestHeavy:
         generate_binary(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 250000, 3)
-        verify_file(zst_path, raw_path, raw_data, "heavy_binary")
+        verify_file(zst_path, raw_data, "heavy_binary")
 
     def test_heavy_zeros(self, tmp_path):
         """50 MB zeros, 999999 B frames, level 3."""
@@ -203,7 +203,7 @@ class TestHeavy:
         generate_zeros(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 999999, 3)
-        verify_file(zst_path, raw_path, raw_data, "heavy_zeros")
+        verify_file(zst_path, raw_data, "heavy_zeros")
 
     def test_heavy_mixed(self, tmp_path):
         """20 MB mixed (text+binary+pattern), 500000 B frames, level 9."""
@@ -214,7 +214,7 @@ class TestHeavy:
         generate_mixed(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 500000, 9)
-        verify_file(zst_path, raw_path, raw_data, "heavy_mixed")
+        verify_file(zst_path, raw_data, "heavy_mixed")
 
     def test_heavy_level_max(self, tmp_path):
         """5 MB base64 text, 350000 B frames, level 22 (max)."""
@@ -225,7 +225,7 @@ class TestHeavy:
         generate_text(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 350000, 22)
-        verify_file(zst_path, raw_path, raw_data, "heavy_level_max")
+        verify_file(zst_path, raw_data, "heavy_level_max")
 
     def test_heavy_small_frames(self, tmp_path):
         """5 MB random binary, 3000 B frames (~1747 frames), level 1."""
@@ -236,7 +236,7 @@ class TestHeavy:
         generate_binary(str(raw_path), size)
         raw_data = raw_path.read_bytes()
         compress_with_t2sz(raw_path, zst_path, 3000, 1)
-        verify_file(zst_path, raw_path, raw_data, "heavy_small_frames")
+        verify_file(zst_path, raw_data, "heavy_small_frames")
 
     def test_heavy_single_frame(self, tmp_path):
         """20 MB random binary, single frame (20M), level 3."""
@@ -248,4 +248,4 @@ class TestHeavy:
         raw_data = raw_path.read_bytes()
         # t2sz with frame size = file size → single frame
         compress_with_t2sz(raw_path, zst_path, "20M", 3)
-        verify_file(zst_path, raw_path, raw_data, "heavy_single_frame")
+        verify_file(zst_path, raw_data, "heavy_single_frame")
