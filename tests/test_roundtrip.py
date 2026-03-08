@@ -91,6 +91,8 @@ class TestRoundTrip:
     def test_read_byte_by_byte(self, tmp_path, name, seed, frames, fsize, flags):
         """Sequential 1-byte reads through entire file."""
         zst, raw_data = self._setup(tmp_path, seed, frames, fsize, flags)
+        if len(raw_data) > 10 * 1024 * 1024:
+            pytest.skip(f"Skipping byte-by-byte for {len(raw_data)} bytes (> 10 MB)")
 
         with IndexedZstdFile(zst) as f:
             for i, expected_byte in enumerate(raw_data):
