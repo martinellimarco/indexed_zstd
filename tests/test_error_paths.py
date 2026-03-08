@@ -45,18 +45,24 @@ class TestErrorCreation:
         truncated = tmp_path / "truncated.zst"
         truncated.write_bytes(zst_data[:15])
 
-        # May either fail to open or produce errors on read
+        # Must either fail to open or fail/return short data on read
+        raised = False
         try:
             f = IndexedZstdFile(str(truncated))
-            # If it opens, reads should fail or produce incorrect data
             try:
-                f.read()
+                data = f.read()
+                # If read succeeds, data must be shorter than the original
+                assert len(data) < 4 * 1024, (
+                    f"Truncated file returned {len(data)} bytes, expected less than original"
+                )
             except Exception:
-                pass  # Expected
+                raised = True
             finally:
                 f.close()
         except Exception:
-            pass  # Also acceptable: fail at open time
+            raised = True
+        # At least one of: open failed, read failed, or data was short
+        assert raised or len(data) < 4 * 1024
 
     def test_error_corrupted_header(self, tmp_path):
         """C: error_corrupted_header — zstd with corrupted magic number."""
@@ -149,17 +155,20 @@ class TestCorruptedData:
         corrupted = tmp_path / "corrupted_frame.zst"
         corrupted.write_bytes(bytes(zst_data))
 
-        # Should either fail to open or fail during read
+        # Must either fail to open, fail during read, or return corrupted data
+        raised = False
         try:
             with IndexedZstdFile(str(corrupted)) as f:
                 try:
                     data = f.read()
-                    # If we got data, it should differ from original (corruption)
-                    # or we may get a partial read
+                    # If read succeeds, data must differ from original
+                    assert data != raw_data, "Corrupted file returned identical data"
                 except Exception:
-                    pass  # Expected: decompression error
+                    raised = True
         except Exception:
-            pass  # Also acceptable: fail at creation
+            raised = True
+        # At least one of: open failed, read failed, or data differs
+        assert raised or data != raw_data
 
     def test_error_mixed_format(self, tmp_path):
         """C: error_mixed_format — valid ZSTD followed by garbage."""
