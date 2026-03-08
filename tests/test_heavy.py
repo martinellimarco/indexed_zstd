@@ -53,64 +53,37 @@ def sha256_file(path):
 
 def generate_text(path, size):
     """Generate base64 text data (high compressibility)."""
-    raw_bytes_needed = size * 3 // 4 + 1048576
-    blocks = raw_bytes_needed // 1048576 + 1
-    # Generate random bytes → base64
-    result = subprocess.run(
-        ["dd", "if=/dev/urandom", "bs=1048576", f"count={blocks}"],
-        capture_output=True,
-    )
     import base64
-    encoded = base64.b64encode(result.stdout)
+    raw_bytes_needed = size * 3 // 4 + 1
+    encoded = base64.b64encode(os.urandom(raw_bytes_needed))
     Path(path).write_bytes(encoded[:size])
 
 
 def generate_binary(path, size):
     """Generate random binary data (nearly incompressible)."""
-    blocks = size // 1048576
-    subprocess.run(
-        ["dd", "if=/dev/urandom", f"of={path}", "bs=1048576", f"count={blocks}"],
-        capture_output=True,
-    )
+    Path(path).write_bytes(os.urandom(size))
 
 
 def generate_zeros(path, size):
     """Generate zero-filled data (extreme compression ratio)."""
-    blocks = size // 1048576
-    subprocess.run(
-        ["dd", "if=/dev/zero", f"of={path}", "bs=1048576", f"count={blocks}"],
-        capture_output=True,
-    )
+    Path(path).write_bytes(b"\x00" * size)
 
 
 def generate_mixed(path, size):
     """Generate mixed data: 1/3 text + 1/3 binary + 1/3 repetitive."""
+    import base64
     third = size // 3
     rest = size - third - third
 
     parts = bytearray()
 
     # 1/3 text (base64)
-    raw_bytes_needed = third * 3 // 4 + 1048576
-    blocks = raw_bytes_needed // 1048576 + 1
-    result = subprocess.run(
-        ["dd", "if=/dev/urandom", "bs=1048576", f"count={blocks}"],
-        capture_output=True,
-    )
-    import base64
-    encoded = base64.b64encode(result.stdout)
+    raw_bytes_needed = third * 3 // 4 + 1
+    encoded = base64.b64encode(os.urandom(raw_bytes_needed))
     parts.extend(encoded[:third])
 
     # 1/3 binary (random)
-    bin_blocks = third // 1048576
-    if bin_blocks > 0:
-        result = subprocess.run(
-            ["dd", "if=/dev/urandom", "bs=1048576", f"count={bin_blocks}"],
-            capture_output=True,
-        )
-        parts.extend(result.stdout[:third])
-    else:
-        parts.extend(os.urandom(third))
+    parts.extend(os.urandom(third))
 
     # 1/3 repetitive pattern
     pattern = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
