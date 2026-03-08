@@ -13,7 +13,9 @@ The test suite exercises the `indexed_zstd` Python binding across five dimension
 | **Realistic data** | SHA256 + t2sz real blobs      | high/low compressibility, many frame sizes & levels   |
 
 183 tests in total: 44 round-trip, 56 API, 11 error-path, 65 reference comparison,
-and 7 heavy (realistic data) tests. All tests run unconditionally — no skips.
+and 7 heavy (realistic data) tests. Core tests (round-trip, API, error paths) run
+unconditionally; reference tests are skipped if `zstd` is not in PATH, heavy tests
+are skipped if `t2sz` is not available.
 
 ---
 
@@ -21,7 +23,7 @@ and 7 heavy (realistic data) tests. All tests run unconditionally — no skips.
 
 | Dependency     | Required for         | macOS                                           | Linux                                           |
 |----------------|----------------------|-------------------------------------------------|-------------------------------------------------|
-| Python ≥ 3.8   | all tests            | `brew install python`                           | `apt install python3`                           |
+| Python ≥ 3.10  | all tests            | `brew install python`                           | `apt install python3`                           |
 | `pytest`       | all tests            | `pip install pytest`                            | `pip install pytest`                            |
 | `gen_seekable` | all tests            | build libzstd-seek                              | build libzstd-seek                              |
 | `zstd` CLI     | reference tests only | `brew install zstd`                             | `apt install zstd`                              |
@@ -29,18 +31,18 @@ and 7 heavy (realistic data) tests. All tests run unconditionally — no skips.
 
 ### Building `gen_seekable`
 
-The test data generator comes from the `libzstd-seek` project:
+The test data generator comes from the `libzstd-seek` submodule:
 
 ```bash
-cd ../libzstd-seek
-cmake -B build -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --target gen_seekable
-# Binary: build/tests/gen_seekable
+cmake -S indexed_zstd/libzstd-seek -B indexed_zstd/libzstd-seek/build -DBUILD_TESTS=ON
+cmake --build indexed_zstd/libzstd-seek/build --target gen_seekable
+# Binary: indexed_zstd/libzstd-seek/build/tests/gen_seekable
 ```
 
-The test suite looks for `gen_seekable` relative to the project layout
-(`../libzstd-seek/build/tests/gen_seekable`). If your build is elsewhere,
-set the `GEN_SEEKABLE` environment variable or update the path in `tests/conftest.py`.
+The test suite looks for `gen_seekable` in this order:
+1. `GEN_SEEKABLE` environment variable (if set)
+2. In-repo submodule: `indexed_zstd/libzstd-seek/build/tests/gen_seekable`
+3. Fallback: `gen_seekable` on `PATH`
 
 ---
 

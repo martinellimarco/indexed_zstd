@@ -15,15 +15,21 @@ from pathlib import Path
 import pytest
 
 # ── Path to the gen_seekable binary from libzstd-seek ────────────────────────
-# Adjust this if your libzstd-seek build directory is elsewhere.
-_LIBZSTD_SEEK_DIR = Path(__file__).resolve().parent.parent.parent / "libzstd-seek"
-GEN_SEEKABLE = str(_LIBZSTD_SEEK_DIR / "build" / "tests" / "gen_seekable")
+# Resolution order:
+#   1) GEN_SEEKABLE environment variable
+#   2) In-repo submodule: indexed_zstd/libzstd-seek/build/tests/gen_seekable
+#   3) Fallback: PATH lookup via shutil.which
 
-if not os.path.isfile(GEN_SEEKABLE):
-    # Fallback: look in PATH
-    _found = shutil.which("gen_seekable")
-    if _found:
-        GEN_SEEKABLE = _found
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_SUBMODULE_BIN = _REPO_ROOT / "indexed_zstd" / "libzstd-seek" / "build" / "tests" / "gen_seekable"
+
+_env = os.environ.get("GEN_SEEKABLE")
+if _env and os.path.isfile(_env):
+    GEN_SEEKABLE = _env
+elif _SUBMODULE_BIN.is_file():
+    GEN_SEEKABLE = str(_SUBMODULE_BIN)
+else:
+    GEN_SEEKABLE = shutil.which("gen_seekable") or "gen_seekable"
 
 
 def generate_test_data(tmp_path, seed, num_frames, frame_size, *flags):
