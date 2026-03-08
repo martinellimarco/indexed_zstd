@@ -55,11 +55,11 @@ class TestErrorCreation:
                 assert len(data) < 4 * 1024, (
                     f"Truncated file returned {len(data)} bytes, expected less than original"
                 )
-            except Exception:
+            except (OSError, ValueError, RuntimeError):
                 raised = True
             finally:
                 f.close()
-        except Exception:
+        except (OSError, ValueError, RuntimeError):
             raised = True
         # At least one of: open failed, read failed, or data was short
         assert raised or len(data) < 4 * 1024
@@ -163,9 +163,9 @@ class TestCorruptedData:
                     data = f.read()
                     # If read succeeds, data must differ from original
                     assert data != raw_data, "Corrupted file returned identical data"
-                except Exception:
+                except (OSError, ValueError, RuntimeError):
                     raised = True
-        except Exception:
+        except (OSError, ValueError, RuntimeError):
             raised = True
         # At least one of: open failed, read failed, or data differs
         assert raised or data != raw_data
@@ -281,6 +281,7 @@ class TestCorruptedData:
         try:
             with IndexedZstdFile(str(path_c)) as f:
                 data = f.read()
-                # May or may not match, but should not crash
+                # Compressed frames are intact, only footer is truncated
+                assert len(data) > 0, "Truncated footer produced empty output"
         except Exception:
-            pass  # Acceptable
+            pass  # Acceptable: rejecting a malformed file is fine
