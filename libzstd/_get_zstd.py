@@ -1,6 +1,7 @@
 """download the latest zstd release for win64"""
 import io
 import json
+import os
 import pathlib
 import platform
 import urllib.request
@@ -13,7 +14,13 @@ if platform.system() != "Windows":
 
 ZSTD_RELEASE_LATEST = "https://api.github.com/repos/facebook/zstd/releases/latest"
 
-with urllib.request.urlopen(ZSTD_RELEASE_LATEST) as response:
+# Use GITHUB_TOKEN if available (CI) to avoid API rate limits.
+request = urllib.request.Request(ZSTD_RELEASE_LATEST)
+token = os.environ.get("GITHUB_TOKEN")
+if token:
+    request.add_header("Authorization", f"token {token}")
+
+with urllib.request.urlopen(request) as response:
     data = json.load(response)
 
 for asset in data["assets"]:
