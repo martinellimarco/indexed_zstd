@@ -30,7 +30,7 @@ cdef extern from "ZSTDReader.hpp":
         size_t tell() except +
         size_t tellCompressed() except +
         size_t size() except +
-        int read(int, char*, size_t) except +
+        long long read(int, char*, size_t) except +
         bool blockOffsetsComplete() except +
         map[size_t, size_t] blockOffsets() except +
         map[size_t, size_t] availableBlockOffsets() except +

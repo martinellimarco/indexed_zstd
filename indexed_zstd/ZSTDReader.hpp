@@ -95,7 +95,7 @@ public:
         if(m_closed){
             return false;
         }
-        return ZSTDSeek_jumpTableIsInitialized(sctx) > 0;
+        return ZSTDSeek_jumpTableIsInitialized(sctx);
     }
 
     /**
@@ -173,7 +173,7 @@ public:
 
     size_t
     seek( long long int offset,
-          int           origin = SEEK_SET )
+          int           origin = SEEK_SET ) override
     {
         if(m_closed){
             return 0;
@@ -186,7 +186,7 @@ public:
      * @param[out] outputBuffer should at least be large enough to hold @p nBytesToRead bytes
      * @return number of bytes written
      */
-    int
+    int64_t
     read( const int    outputFileDescriptor = -1,
           char* const  outputBuffer = nullptr,
           const size_t nBytesToRead = std::numeric_limits<size_t>::max() )
