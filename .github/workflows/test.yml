@@ -111,6 +111,7 @@ jobs:
         CIBW_ARCHS: auto64
         CIBW_ARCHS_MACOS: "arm64"
         CIBW_BEFORE_ALL_LINUX: dnf install -y libzstd-devel || apk add zstd-dev
+        CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=15.0
         CIBW_BEFORE_ALL_MACOS: brew update && brew reinstall zstd
         CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
         CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"

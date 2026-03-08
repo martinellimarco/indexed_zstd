@@ -9,8 +9,9 @@ from Cython.Build import cythonize
 
 
 if platform.system() == "Darwin":
-    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', '-mmacosx-version-min=11.0']
-    extra_link_args    = [ '-lzstd', '-stdlib=libc++', '-mmacosx-version-min=11.0' ]
+    _macos_target = os.environ.get('MACOSX_DEPLOYMENT_TARGET', '11.0')
+    extra_compile_args = [ '-std=c++17', '-O3', '-DNDEBUG', '-stdlib=libc++', f'-mmacosx-version-min={_macos_target}']
+    extra_link_args    = [ '-lzstd', '-stdlib=libc++', f'-mmacosx-version-min={_macos_target}' ]
     include_dirs       = [ '.' ]
     libraries          = [ 'm' ]
     library_dirs       = []
