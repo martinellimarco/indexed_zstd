@@ -3,6 +3,7 @@
 [![Python Version](https://img.shields.io/pypi/pyversions/indexed_zstd)](https://pypi.org/project/indexed-zstd/)
 [![PyPI Platforms](https://img.shields.io/badge/pypi-linux%20%7C%20macOS%20%7C%20windows-brightgreen)](https://pypi.org/project/indexed-zstd/)
 [![Downloads](https://pepy.tech/badge/indexed-zstd/month)](https://pepy.tech/project/indexed-zstd)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/indexed-zstd?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/indexed-zstd)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/martinellimarco/indexed_zstd/workflows/tests/badge.svg)](https://github.com/martinellimarco/indexed_zstd/actions)
 ![C++17](https://img.shields.io/badge/C++-17-blue.svg)
