@@ -70,11 +70,11 @@ with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file
 
 setup(
     name             = 'indexed_zstd',
-    version          = '1.7.0',
+    version          = '1.7.1',
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',
-    author           = 'Marco Martinelli with the help of Maximilian Knespel and ',
+    author           = 'Marco Martinelli with the help of Maximilian Knespel',
     license          = 'MIT',
     classifiers      = [ 'License :: OSI Approved :: MIT License',
                          'Development Status :: 5 - Production/Stable',
