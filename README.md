@@ -1,6 +1,6 @@
 [![PyPI version](https://badge.fury.io/py/indexed-zstd.svg)](https://badge.fury.io/py/indexed-zstd)
 [![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/indexed_zstd?label=conda+pagkage&color=brightgreen)](https://anaconda.org/conda-forge/indexed_zstd)
-[![AUR version](https://img.shields.io/aur/version/python-indexed-zstd?color=brightgreen)](https://aur.archlinux.org/packages/python-indexed-zstd/)
+[![Arch version](https://img.shields.io/archlinux/v/extra/x86_64/python-indexed-zstd?color=brightgreen)](https://archlinux.org/packages/extra/x86_64/python-indexed-zstd/)
 [![Python Version](https://img.shields.io/pypi/pyversions/indexed_zstd)](https://pypi.org/project/indexed-zstd/)
 [![PyPI Platforms](https://img.shields.io/badge/pypi-linux%20%7C%20macOS%20%7C%20windows-blue)](https://pypi.org/project/indexed-zstd/)
 [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/indexed_zstd.svg?label=conda&color=blue)](https://anaconda.org/conda-forge/indexed_zstd)
@@ -56,10 +56,12 @@ brew install zstd
 conda install -c conda-forge indexed_zstd
 ```
 
-### Arch Linux (AUR)
+### Arch Linux
+
+`python-indexed-zstd` is available in the official Arch Linux `extra` repository:
 
 ```bash
-yay -S python-indexed-zstd
+sudo pacman -S python-indexed-zstd
 ```
 
 ## Usage
