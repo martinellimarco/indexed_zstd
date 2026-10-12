@@ -6,6 +6,7 @@ jobs:
   Tests:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         # Oldest and newest versions should be enough. Python versions are supported 5 years from release date.
         # 3.10 was released 2021-10-04 and end-of-life will be 2026-10-25
@@ -81,6 +82,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-15, ubuntu-latest, ubuntu-24.04-arm, windows-latest]
 
