@@ -70,12 +70,13 @@ with open( os.path.join( scriptPath, 'README.md' ), encoding = 'utf-8' ) as file
 
 setup(
     name             = 'indexed_zstd',
-    version          = '1.7.1',
+    version          = '1.7.2',
 
     description      = 'Fast random access to zstd files',
     url              = 'https://github.com/martinellimarco/indexed_zstd',
     author           = 'Marco Martinelli with the help of Maximilian Knespel',
     license          = 'MIT',
+    python_requires  = '>=3.10',
     classifiers      = [ 'License :: OSI Approved :: MIT License',
                          'Development Status :: 5 - Production/Stable',
                          'Intended Audience :: Developers',
@@ -89,6 +90,7 @@ setup(
                          'Programming Language :: Python :: 3.12',
                          'Programming Language :: Python :: 3.13',
                          'Programming Language :: Python :: 3.14',
+                         'Programming Language :: Python :: 3.15',
                          'Programming Language :: C++',
                          'Programming Language :: C',
                          'Topic :: Software Development :: Libraries',

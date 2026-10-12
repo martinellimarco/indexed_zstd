@@ -7,12 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  Deploy-Wheels:
+  Build-Wheels:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-15, ubuntu-latest, ubuntu-24.04-arm, windows-latest, windows-11-arm]
 
     steps:
     - uses: actions/checkout@v4
@@ -29,34 +29,35 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install --upgrade-strategy eager --upgrade cython twine cibuildwheel setuptools
 
-    - name: Build Tarball
-      if: matrix.os == 'ubuntu-latest'
-      run: python3 setup.py sdist
-
     - name: Build Wheels
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
         CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_2
+        CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
+        CIBW_MUSLLINUX_AARCH64_IMAGE: musllinux_1_2
         CIBW_ARCHS: auto64
         CIBW_ARCHS_MACOS: "arm64"
         CIBW_BEFORE_ALL_LINUX: dnf install -y libzstd-devel || apk add zstd-dev
         CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=15.0
         CIBW_BEFORE_ALL_MACOS: brew update && brew reinstall zstd
-        CIBW_BEFORE_BUILD_WINDOWS: "python {package}/libzstd/_get_zstd.py && pip install delvewheel"
-        CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
+        CIBW_BEFORE_ALL_WINDOWS: python {package}/libzstd/_get_zstd.py
+        CIBW_BEFORE_BUILD_WINDOWS: pip install delvewheel
+        CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair --add-path {package}/libzstd/lib -w {dest_dir} {wheel}"
       run: python -m cibuildwheel --output-dir dist
 
     - name: Check Wheels
       run: twine check dist/*
 
-    - name: Publish to PyPI
-      env:
-        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-      run: twine upload --skip-existing -u __token__ dist/*
+    - name: Upload Wheels
+      uses: actions/upload-artifact@v4
+      with:
+        name: wheels-${{ matrix.os }}
+        path: dist/*.whl
+        if-no-files-found: error
 
 
-  Deploy-Tarball:
+  Build-Tarball:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -76,10 +77,42 @@ jobs:
     - name: Create Tarball
       run: python3 setup.py sdist
 
-    - name: Check Wheels
+    - name: Check Tarball
+      run: twine check dist/*
+
+    - name: Upload Tarball
+      uses: actions/upload-artifact@v4
+      with:
+        name: tarball
+        path: dist/*.tar.gz
+        if-no-files-found: error
+
+
+  # Runs only when every build succeeded, so either all the files are published or none
+  Publish:
+    needs: [Build-Wheels, Build-Tarball]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Wheels and Tarball
+      uses: actions/download-artifact@v4
+      with:
+        path: dist
+        merge-multiple: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade twine
+
+    - name: Check Wheels and Tarball
       run: twine check dist/*
 
     - name: Publish to PyPI
       env:
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-      run: echo twine upload --skip-existing -u __token__ dist/*
+      run: twine upload --skip-existing -u __token__ dist/*

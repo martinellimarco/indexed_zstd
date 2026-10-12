@@ -1,8 +1,8 @@
 [![PyPI version](https://badge.fury.io/py/indexed-zstd.svg)](https://badge.fury.io/py/indexed-zstd)
-[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/indexed_zstd?label=conda+pagkage&color=brightgreen)](https://anaconda.org/conda-forge/indexed_zstd)
+[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/indexed_zstd?label=conda+package&color=brightgreen)](https://anaconda.org/conda-forge/indexed_zstd)
 [![Arch version](https://img.shields.io/archlinux/v/extra/x86_64/python-indexed-zstd?color=brightgreen)](https://archlinux.org/packages/extra/x86_64/python-indexed-zstd/)
 [![Python Version](https://img.shields.io/pypi/pyversions/indexed_zstd)](https://pypi.org/project/indexed-zstd/)
-[![PyPI Platforms](https://img.shields.io/badge/pypi-linux%20%7C%20macOS%20%7C%20windows-blue)](https://pypi.org/project/indexed-zstd/)
+[![PyPI Platforms](https://img.shields.io/badge/pypi-linux%20x86__64%2Faarch64%20%7C%20macOS%20arm64%20%7C%20windows%20x86__64%2Farm64-blue)](https://pypi.org/project/indexed-zstd/)
 [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/indexed_zstd.svg?label=conda&color=blue)](https://anaconda.org/conda-forge/indexed_zstd)
 [![Downloads](https://static.pepy.tech/personalized-badge/indexed-zstd?period=month&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BLUE&left_text=pypi+downloads/month)](https://pypi.org/project/indexed-zstd/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/indexed-zstd?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BLUE&left_text=pypi+downloads)](https://pypi.org/project/indexed-zstd/)
@@ -187,7 +187,7 @@ pip install .
 Requires [Visual Studio Build Tools](https://visualstudio.microsoft.com/it/downloads/) with the C++ workload.
 
 ```powershell
-python libzstd/_get_zstd.py    # downloads zstd headers and DLL
+python libzstd/_get_zstd.py    # downloads zstd headers and DLL (on ARM64 builds a static library, needs CMake)
 pip install .
 ```
 
