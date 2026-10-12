@@ -249,4 +249,4 @@ class IndexedZstdFile(io.BufferedReader):
         """
         return self.zstdreader.is_multiframe()
 
-__version__ = '1.7.0'
+__version__ = '1.7.2'
